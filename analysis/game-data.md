@@ -67,6 +67,10 @@ The installed 1.03 update adds `ms2patch.psarc` next to the disc archive (3,570 
 
 **Scripts.** `scripts/*.lua` are tuning files (vehicle definitions, particles, cameras, logging) and contain no online logic. `logging.lua` switches `LibOnline(true)` on.
 
+**Options (`Configs/`).** The 37 `.cfg` files are developer configurations: benchmark tracks, soak and stress tests (`soak_online_host.cfg`, `mpstress.cfg`, `onlinetest.cfg`), the build options (`useSVO`, `svoSSL`, `svoDebug`, `quickOnlineRace`, the commented-out `mediusUniverse` and `svoUrl`) and the `OnlineOptions` rubber band values. They contain **no timeouts, retry counts or result queue settings**; those are in the code.
+
+**What the EBOOT asks of the NP libraries.** From the strings: `sceNpManager` (status, NP id, online name, account region, `RequestTicket2`), `sceNpBasic` (friends, messages, events), `sceNpLookup`, `sceNpMatching2` (the context, world and room calls), `sceNpTrophy` (communication id `NPWR00214_00`) and NP Score through `cNpScore` (the game also talks to the PlayStation Store for downloads). The Medius connection is the game's own matchmaking; the NP Matching2 context is started as well.
+
 ## Ideas that follow
 
 - Check the Speed and Volcano Weekend times against the real courses: the length of a `_speed` course gives a lower bound for a plausible time.
