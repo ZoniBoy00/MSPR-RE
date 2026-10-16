@@ -4,53 +4,11 @@
 
 Where things stand now: the SVO routes, the Medius matchmaking for Ranked and Casual and the race are implemented and played with the real game (RPCS3, and first tests with a real PS3); ghost download, Speed Weekend and the NP ticket signature are decoded. The Ghidra work covers the v1.03 EBOOT (10,740 functions, the verified names are in `tools/re/ghidra/`). Read [reverse-engineering.md](../reverse-engineering.md), [findings.md](../findings.md) and the open items in the [README](../../README.md).
 
-## Update 5 — folder layout redone
+## The first days, stage by stage
 
-Root: `MSPR-Server/` (ready runnable server + `MSPR-Server-<date>.zip`), `source/` (source code: server-ts,
-PSMultiServer, server), `research/` (re, captures, tools, mspr_capture), `docs/`, `_archive/`.
-See README.md. Paths in the sections below are old: re\ -> research\re\, server\ -> source\server\.
-- Fixed: Horizon's absolute paths in horizon.json/medius.json -> the start script fixes them on every start
-  (without this a moved package did not read its own configs, e.g. -PublicIp did not work). Tested.
-- e2e_check restores the test account's original stats (the captured ticket = a real player account).
-- Build-Package updates MSPR-Server and keeps the database, config and EULA.
+The stages follow each other in time, oldest first. The numbers only give the order.
 
-## Update 4 — ready package
-
-- One database: Horizon's MSPR accounts + Medius stats -> server-ts SQLite (loopback API /horizon/accounts),
-  the same account id for SVO and Medius; JSON backup if the API is down.
-- Public hosting: Start -PublicIp auto|x.x.x.x (Horizon UsePublicIp/PublicIpOverride + DNS).
-- Packaging: INSTALL/START/STOP-MSPR.cmd, Install-MSPR.ps1, Build-Package.ps1 -> dist\*.zip; the package
-  was tested in a clean folder: install + start + e2e OK.
-- Fixed bug: the INSERT of a new account failed after the column migration (test added, 72/72).
-- User guide: docs\getting-started.md.
-
-## Update 3 — TS server
-
-- Architecture: Horizon (C#) = Medius/DME, `server-ts/` (TypeScript/Node) = SVO + DNS + status web.
-- server-ts: node:sqlite database (accounts, races), EULA/announcement as text files
-  (`server-ts/config/eula.txt`, `announcement.txt`), an EULA change forces re-acceptance, the status page
-  :8080 reads Horizon's `/GetRooms/` (port 61920). 71 tests OK.
-- The Start/Stop scripts use server-ts; the Python SVO/DNS moved to `server/legacy/python/`.
-- Useful from PSMultiServer: Horizon CRUD `/GetRooms/` (in use). Next big step: Horizon's DB middleware API
-  (db.config.json DatabaseUrl) implemented in server-ts -> one SQLite for accounts + Medius stats.
-
-## Update 2 — ranked/casual reversed + implemented, folder layout redone
-
-Folder layout: see README.md. Paths: `server\scripts\Start-MSPRServer.ps1`,
-`server\scripts\Stop-MSPRServer.ps1`, test `server\medius\e2e_check.py`.
-
-- Update EBOOT 1.03 decrypted: `rpcs3 --decrypt` -> `re\v103\EBOOT.elf` (NPDRM, unself does not work)
-- Two TOCs (0xe977a8 / 0xea7770) -> the xref, Ghidra and registry tools support both
-  (`tools\xref_eboot.py`, `tools\ghidra_decompile.py`, `tools\medius_registry.py`)
-- Ranked/casual fully worked out: docs\ranked-casual.md. On PS Rewired ranked does not work because the
-  MLS refers to the MMS at the LAN address 192.0.2.11:10079.
-- Implemented in Horizon: MsprMatchmaker (supersets 1+2, MatchPartyRequest2 -> the server creates a DME
-  world -> JoinAssignedGame), correct 0x5E/0x60 messages, persistence of accounts + the stats blob
-  (static\mspr_accounts.json). e2e_check: the whole chain OK.
-- The in-game ranked leaderboard = RPCN NP Score (works with RPCN as is).
-- Open: real game -> JoinGame/DME race, the field layout of the stats blob (XP) for SVO ranked.
-
-## Update 1 — own server works end to end with the test client
+## Stage 1 — the own server works end to end with the test client
 
 (Paths in this section are from before the folder redo: now server\scripts\ and server\medius\.)
 RPCS3: the MSPR config's DNS = this PC's IP (or `Start-MSPRServer.ps1 -UseLocalRPCS3`).
@@ -90,6 +48,52 @@ Stop-MSPRServer.ps1, fixtures\svo\*; tools\extract_svo_fixtures.py, tools\extrac
 
 Next step: the real game against our own server -> Horizon.log shows every decoded message (MLS lobby,
 custom game, DME). After that ranked/casual (MMS).
+
+## Stage 2 — Ranked and Casual worked out and implemented
+
+Folder layout: see README.md. Paths: `server\scripts\Start-MSPRServer.ps1`,
+`server\scripts\Stop-MSPRServer.ps1`, test `server\medius\e2e_check.py`.
+
+- EBOOT 1.03 decrypted: `rpcs3 --decrypt` -> `re\v103\EBOOT.elf` (NPDRM, unself does not work)
+- Two TOCs (0xe977a8 / 0xea7770) -> the xref, Ghidra and registry tools support both
+  (`tools\xref_eboot.py`, `tools\ghidra_decompile.py`, `tools\medius_registry.py`)
+- Ranked/casual fully worked out: docs\ranked-casual.md. On PS Rewired ranked does not work because the
+  MLS refers to the MMS at the LAN address 192.0.2.11:10079.
+- Implemented in Horizon: MsprMatchmaker (supersets 1+2, MatchPartyRequest2 -> the server creates a DME
+  world -> JoinAssignedGame), correct 0x5E/0x60 messages, persistence of accounts + the stats blob
+  (static\mspr_accounts.json). e2e_check: the whole chain OK.
+- The in-game ranked leaderboard = RPCN NP Score (works with RPCN as is).
+- Open: real game -> JoinGame/DME race, the field layout of the stats blob (XP) for SVO ranked.
+
+## Stage 3 — the TypeScript server
+
+- Architecture: Horizon (C#) = Medius/DME, `server-ts/` (TypeScript/Node) = SVO + DNS + status web.
+- server-ts: node:sqlite database (accounts, races), EULA/announcement as text files
+  (`server-ts/config/eula.txt`, `announcement.txt`), an EULA change forces re-acceptance, the status page
+  :8080 reads Horizon's `/GetRooms/` (port 61920). 71 tests OK.
+- The Start/Stop scripts use server-ts; the Python SVO/DNS moved to `server/legacy/python/`.
+- Useful from PSMultiServer: Horizon CRUD `/GetRooms/` (in use). Next big step: Horizon's DB middleware API
+  (db.config.json DatabaseUrl) implemented in server-ts -> one SQLite for accounts + Medius stats.
+
+## Stage 4 — the ready package
+
+- One database: Horizon's MSPR accounts + Medius stats -> server-ts SQLite (loopback API /horizon/accounts),
+  the same account id for SVO and Medius; JSON backup if the API is down.
+- Public hosting: Start -PublicIp auto|x.x.x.x (Horizon UsePublicIp/PublicIpOverride + DNS).
+- Packaging: INSTALL/START/STOP-MSPR.cmd, Install-MSPR.ps1, Build-Package.ps1 -> dist\*.zip; the package
+  was tested in a clean folder: install + start + e2e OK.
+- Fixed bug: the INSERT of a new account failed after the column migration (test added, 72/72).
+- User guide: docs\getting-started.md.
+
+## Stage 5 — the folder layout redone
+
+Root: `MSPR-Server/` (ready runnable server + `MSPR-Server-<date>.zip`), `source/` (source code: server-ts,
+PSMultiServer, server), `research/` (re, captures, tools, mspr_capture), `docs/`, `_archive/`.
+See README.md. Paths in the sections below are old: re\ -> research\re\, server\ -> source\server\.
+- Fixed: Horizon's absolute paths in horizon.json/medius.json -> the start script fixes them on every start
+  (without this a moved package did not read its own configs, e.g. -PublicIp did not work). Tested.
+- e2e_check restores the test account's original stats (the captured ticket = a real player account).
+- Build-Package updates MSPR-Server and keeps the database, config and EULA.
 
 ## 1. WHAT IS DONE
 
