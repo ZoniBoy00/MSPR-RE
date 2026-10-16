@@ -1,0 +1,231 @@
+# MSPR PROJECT — COMPLETE STATUS REVIEW
+
+**Historical snapshot.** Everything below describes the project at the time of the snapshot: the percentages, the "what does not work yet" lists and the file paths (see [README](README.md) for the old-to-new path map) are not the current state.
+
+Where things stand now: the SVO routes, the Medius matchmaking for Ranked and Casual and the race are implemented and played with the real game (RPCS3, and first tests with a real PS3); ghost download, Speed Weekend and the NP ticket signature are decoded. The Ghidra work covers the v1.03 EBOOT (10,740 functions, the verified names are in `tools/re/ghidra/`). Read [reverse-engineering.md](../reverse-engineering.md), [findings.md](../findings.md) and the open items in the [README](../../README.md).
+
+## Update 5 — folder layout redone
+
+Root: `MSPR-Server/` (ready runnable server + `MSPR-Server-<date>.zip`), `source/` (source code: server-ts,
+PSMultiServer, server), `research/` (re, captures, tools, mspr_capture), `docs/`, `_archive/`.
+See README.md. Paths in the sections below are old: re\ -> research\re\, server\ -> source\server\.
+- Fixed: Horizon's absolute paths in horizon.json/medius.json -> the start script fixes them on every start
+  (without this a moved package did not read its own configs, e.g. -PublicIp did not work). Tested.
+- e2e_check restores the test account's original stats (the captured ticket = a real player account).
+- Build-Package updates MSPR-Server and keeps the database, config and EULA.
+
+## Update 4 — ready package
+
+- One database: Horizon's MSPR accounts + Medius stats -> server-ts SQLite (loopback API /horizon/accounts),
+  the same account id for SVO and Medius; JSON backup if the API is down.
+- Public hosting: Start -PublicIp auto|x.x.x.x (Horizon UsePublicIp/PublicIpOverride + DNS).
+- Packaging: INSTALL/START/STOP-MSPR.cmd, Install-MSPR.ps1, Build-Package.ps1 -> dist\*.zip; the package
+  was tested in a clean folder: install + start + e2e OK.
+- Fixed bug: the INSERT of a new account failed after the column migration (test added, 72/72).
+- User guide: docs\getting-started.md.
+
+## Update 3 — TS server
+
+- Architecture: Horizon (C#) = Medius/DME, `server-ts/` (TypeScript/Node) = SVO + DNS + status web.
+- server-ts: node:sqlite database (accounts, races), EULA/announcement as text files
+  (`server-ts/config/eula.txt`, `announcement.txt`), an EULA change forces re-acceptance, the status page
+  :8080 reads Horizon's `/GetRooms/` (port 61920). 71 tests OK.
+- The Start/Stop scripts use server-ts; the Python SVO/DNS moved to `server/legacy/python/`.
+- Useful from PSMultiServer: Horizon CRUD `/GetRooms/` (in use). Next big step: Horizon's DB middleware API
+  (db.config.json DatabaseUrl) implemented in server-ts -> one SQLite for accounts + Medius stats.
+
+## Update 2 — ranked/casual reversed + implemented, folder layout redone
+
+Folder layout: see README.md. Paths: `server\scripts\Start-MSPRServer.ps1`,
+`server\scripts\Stop-MSPRServer.ps1`, test `server\medius\e2e_check.py`.
+
+- Update EBOOT 1.03 decrypted: `rpcs3 --decrypt` -> `re\v103\EBOOT.elf` (NPDRM, unself does not work)
+- Two TOCs (0xe977a8 / 0xea7770) -> the xref, Ghidra and registry tools support both
+  (`tools\xref_eboot.py`, `tools\ghidra_decompile.py`, `tools\medius_registry.py`)
+- Ranked/casual fully worked out: docs\ranked-casual.md. On PS Rewired ranked does not work because the
+  MLS refers to the MMS at the LAN address 192.0.2.11:10079.
+- Implemented in Horizon: MsprMatchmaker (supersets 1+2, MatchPartyRequest2 -> the server creates a DME
+  world -> JoinAssignedGame), correct 0x5E/0x60 messages, persistence of accounts + the stats blob
+  (static\mspr_accounts.json). e2e_check: the whole chain OK.
+- The in-game ranked leaderboard = RPCN NP Score (works with RPCN as is).
+- Open: real game -> JoinGame/DME race, the field layout of the stats blob (XP) for SVO ranked.
+
+## Update 1 — own server works end to end with the test client
+
+(Paths in this section are from before the folder redo: now server\scripts\ and server\medius\.)
+RPCS3: the MSPR config's DNS = this PC's IP (or `Start-MSPRServer.ps1 -UseLocalRPCS3`).
+
+Verified (server\e2e_check.py + server\medius_testclient.py, MSPR's own CLIENT_HELLO from a capture,
+real PS3 SCERT crypto):
+- DNS motorstorm2ps3.online.scee.com -> server
+- MUIS :10071 handshake identical to PS Rewired (C24 S25 C12 S13 C00 S07 C21 S1a), SvoURL message 151 B
+  like PS Rewired
+- MAS :10075 ExtendedSessionBegin->50 B, SetLocalizationParams1->30 B, TicketLogin (RPCN NP ticket)->227 B —
+  the same sizes as PS Rewired
+- MLS :10078 handshake with session key + access token (CONNECT_TCP 106 B)
+- SVO :10060 all 68 captured requests replayed -> X-SVOMac correct, same XML structure
+
+Findings:
+- The earlier "DNS error" = RPCS3's DnsHook got no answer (our DNS was not running). The game never
+  reached Horizon; the ~40 MAS/MPS connections in the logs were Horizon's own DME.
+- SVO responses need X-SVOMac = md5(clientMac + "sp9ck0348sld" + 20×"0") (68/68 match).
+- PS Rewired uses the public default SCERT key (the same as Horizon's DefaultKey). The client's RSA key is
+  per session -> the RC keys of the PS Rewired capture cannot be decrypted; against our own server
+  everything decrypts (Horizon log, HORIZON_VERBOSE=1).
+- MSPR = Medius 1.13 (PS3), app 21624; PS Rewired answers CONNECT_TCP directly with CONNECT_ACCEPT_TCP
+  (no CONNECT_REQUIRE).
+- Horizon.dll embeds its dependencies (Costura) -> after CastleLibrary/HorizonService changes always run
+  `dotnet build Horizon.csproj -c Release --no-incremental`.
+
+Changes to PSMultiServer:
+- MUIS.cs: 21624 -> CONNECT_ACCEPT_TCP; MAS/MLS/MPS/MMS: 21624 added to the ConnectAcceptTCPGames list
+- MuisClass.cs + static\muis.json: SvoURL http://<ip>:10060/motorstormpr/index, NATIp = own IP
+- MediusUniverseSvoURLResponse.cs: 21624 -> fixed 128 B URL (later: varint length, see ranked-casual.md)
+- RT.Models\VerboseLog.cs: HORIZON_VERBOSE=1 logs every decoded message (release build)
+- XI5Ticket.cs: HORIZON_XI5_IGNORE_EXPIRY=1 (tests only; the signature is still checked)
+
+New files: server\scert_crypto.py, medius_testclient.py, medius_ids.py, e2e_check.py, run_horizon.cmd,
+Stop-MSPRServer.ps1, fixtures\svo\*; tools\extract_svo_fixtures.py, tools\extract_medius_streams.py
+(-> re\medius_streams\); tests\test_svo_replay.py. server\mspr_server.py rewritten (PS Rewired compatible SVO).
+
+Next step: the real game against our own server -> Horizon.log shows every decoded message (MLS lobby,
+custom game, DME). After that ranked/casual (MMS).
+
+## 1. WHAT IS DONE
+
+### Network research (100% at the snapshot)
+- The PS Rewired protocol fully documented (captures\REPORT-*.md)
+- MSPR's online architecture mapped as 3 layers
+  * SVO/HTTP :10060 (login/EULA/leaderboards/finishGame) — FULLY DOCUMENTED
+  * Medius :10071/10075/10077 (lobby/matchmaking, SCERT-encrypted)
+  * DME :11001 + TCP/UDP 50000 (game session, SCERT-encrypted)
+- The finishGame stats schema complete (bestTime, laps, wrecks, jumps etc.)
+- The leaderboard XML format known
+- The URL_List mechanism: the server tells the routes, the client does not hardcode them
+
+### Game binary RE (80% at the snapshot)
+- EBOOT.BIN decrypted (unself + ps3keys) -> re\EBOOT.ELF
+- 2059 protocol strings categorised (re\FULL_STRINGS.md)
+- 353 matchmaking strings (re\matchmaking_flow_strings.txt)
+- 145 ranked/casual strings with addresses (re\ranked_casual_strings.txt)
+- The matchmaking flow mapped (StartMatchMaking -> GotMatchMakingTicket -> ROOM_IN_* -> MatchMadeGameTypeString)
+- C++ symbols present (evo::online::SVO*, Medius* classes)
+- Ghidra project with 10740 functions (re\ghidra_proj\MSPRFINAL2)
+- TOC base solved: 0x208958 (tools\final_extract2.py)
+
+### Tools (100% at the snapshot)
+- mspr_capture v0.2: passive network capture (17/17 tests)
+- mspr_status.py: public API monitoring
+- unself.exe: PS3 SELF decryption (Windows)
+- strings_scan.py, eboot_analyze.py, mm_functions.py, final_extract2.py
+- ranked_casual_strings.py, medius_handshake.py, full_strings.py
+- Ghidra + PyGhidra installed and working
+
+### PSMultiServer (build done, configuration in progress)
+- Horizon (Medius MAS/MLS/MPS/MUIS/MMS/DME/NAT/BWPS) — 0 errors
+- SVO — 0 errors
+- MSPR (21624) in Horizon's CompatibleApplicationIds list ✓
+- MotorstormPR2.cs = ready MSPR SVO implementation
+- CRYPTKEY_GAME handlers added (MAS.cs, MPS.cs, MASClient.cs, MPSClient.cs)
+- natservice.pdonline.scea.com + title.pdonline.scea.com -> hosts
+
+### Own SVO server (works)
+- server\mspr_server.py :10060 — every endpoint, catch-all, JSON db
+- server\mspr_dns.py :53 — MSPR domains + wildcard source
+- server\medius_replay_stub.py — handshake replay (obsolete, Horizon replaced it)
+
+## 2. WHAT DOES NOT WORK YET
+
+### Ranked/Casual game modes
+- Does not work on PS Rewired itself (allowedRanks: 0)
+- No implementation in PSMultiServer
+- Needs: decompiling the StartMatchMaking chain (Ghidra) -> ticket parameters -> a MediusMatchFindGame
+  definition for MSPR -> testing against the client
+- Working hours estimate: 2-4 weeks of iterative work
+
+### Medius SCERT handshake with Horizon
+- The game connects + the SCERT handshake goes through
+- CRYPTKEY_GAME handler added but THE GAME CLOSES the connection right after (Disconnected by request)
+  -> cause unknown
+- Possible causes: certificate validation (the client validates the SCERT Root Authority chain), RC4 key
+  derivation different from what Horizon expects, Medius version differences (MSPR = 3.03 vs Horizon's default)
+- Debug: Horizon log + packet capture side by side
+
+### The SVO flow stops after getRegion
+- The game's flow: index ✓ -> GET / ✓ -> getRegion ✓ -> DNS error
+- Should follow: POST https:ticket/login
+- DNS error = the game tries to resolve a name that does not go through (probably "ticket" or a similar
+  URL_List value as a host)
+- mspr_dns.py now wildcard-resolves single-label names -> TEST AGAIN
+
+## 3. NEXT STEPS (in order)
+
+### Step 1: finish the SVO flow (easiest, 1-2 days)
+1. Start the stack (DNS + SVO + Horizon)
+2. RPCS3 DNS = 192.0.2.10
+3. Test online -> check the DNS log for the name that fails
+4. Add catch-all routes to the SVO server if needed
+5. Goal: the ticket/login -> getEula -> leaderboard flow works
+
+### Step 2: Medius handshake with Horizon (medium, 1-2 weeks)
+1. Debug CRYPTKEY_GAME: add debug logging to MAS.cs ProcessMediusMessage
+2. Compare the captured handshake (re\medius_10071_dialogue.txt) with the sequence Horizon sends
+3. Fix the certificate/keys if needed
+4. Goal: the client does not disconnect but continues to the lobby
+
+### Step 3: DME game session (demanding, 2-4 weeks)
+1. DME Application ID -> 21624 (now 120)
+2. SCERT game session encryption (RC4-SHA1)
+3. Test a custom game to the end
+
+### Step 4: Ranked/Casual (most demanding)
+1. Decompile StartMatchMaking (Ghidra, re\ghidra_proj\MSPRFINAL2)
+2. Ticket parameters + matchmaking messages
+3. Test
+
+## 4. FILES
+
+```
+MSPR\
+├── captures\                           — network captures + reports
+│   ├── REPORT-ranked-capture.md       — ranked capture analysis
+│   ├── REPORT-custom-capture.md       — custom capture analysis
+│   └── mspr-*.pcapng + *-summary.json  — raw data
+├── mspr_capture\                       — passive capture tool
+├── server\
+│   ├── mspr_server.py                  — SVO/HTTP :10060
+│   ├── mspr_dns.py                     — DNS :53 (wildcard)
+│   ├── medius_replay_stub.py           — old replay stub
+│   ├── Start-MSPRServer.ps1            — start script
+│   └── data\mspr_server.json           — accounts + results + leaderboards
+├── PSMultiServer\                      — Horizon + SVO (built)
+│   └── Servers\
+│       ├── Horizon\bin\Release\net6.0\Horizon.exe
+│       └── SVO\bin\Release\net6.0\
+└── re\
+    ├── EBOOT.ELF                       — decrypted game code
+    ├── EBOOT.BIN                       — original (copy)
+    ├── RE-FINDINGS.md                  — all RE findings
+    ├── FULL_STRINGS.md                 — 2059 strings categorised
+    ├── ranked_casual_strings.txt       — 145 ranked/casual strings
+    ├── matchmaking_flow_strings.txt    — 353 matchmaking strings
+    ├── medius_10071_dialogue.txt       — Medius handshake dialogue
+    ├── medius_handshake.txt            — handshake from every port
+    ├── RANKED-CASUAL-DESIGN.md         — ranked/casual design
+    ├── EMULATION-SERVER-BLUEPRINT.md   — server blueprint
+    ├── ghidra_proj\MSPRFINAL2          — Ghidra project (10740 fn)
+    └── ghidra_findings\                — decompilations
+```
+
+## 5. STARTING (the whole stack)
+
+```powershell
+# Administrator PowerShell:
+cd <project>\source\server
+python -X utf8 mspr_dns.py          # window 1: DNS :53
+python -X utf8 mspr_server.py       # window 2: SVO :10060
+# (Horizon separately: PSMultiServer\Servers\Horizon\bin\Release\net6.0\Horizon.exe)
+
+# RPCS3: Configuration -> Network -> DNS address: 192.0.2.10
+```
+

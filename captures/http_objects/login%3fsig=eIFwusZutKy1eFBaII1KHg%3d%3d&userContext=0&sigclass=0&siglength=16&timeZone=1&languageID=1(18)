@@ -1,0 +1,9 @@
+<XML>
+    <SP_Login>
+        <status>
+            <id>20600</id>
+        </status>
+            <accountID>61025</accountID>
+        <userContext>0</userContext>
+    </SP_Login>
+</XML>

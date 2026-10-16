@@ -1,0 +1,353 @@
+0xdeb183  Online.ranked.ranking
+0xdeb493  TicketSelectable
+0xdeb513  TicketFestivalRank
+0xdeb69b  UnracedAvailableTicketsInZone
+0xdeb7b3  HasRankForTicket
+0xdeb7cb  TicketUnlocksEliminator
+0xdeb7e3  TicketEliminatorLimit
+0xdeb81b  TicketUnlocksSpeed
+0xdeb833  TicketSpeedTarget
+0xdeb87b  TicketEliminatorLimitAchieved
+0xdeb89b  TicketSpeedTargetAchieved
+0xdeb92b  GameTypeSetFestival
+0xdeb943  GameTypeSetWreckreationFreePlay
+0xdeb963  GameTypeSetWreckreationSplitScreen
+0xdeb98b  GameTypeSetWreckreationOnline
+0xdeb9ab  GameTypeSetRankedOnline
+0xdeb9c3  GameTypeSetCasualOnline
+0xdeb9db  GameTypeSetDemo
+0xdeb9eb  GameTypeSetDemoSplitScreen
+0xdeba0b  GameTypeSetTimeTrial
+0xdeba23  GameTypeSetGui
+0xdeba33  GameTypeReset
+0xdec4a3  CustomLobbyVisibles
+0xdec4bb  CustomLobbySelectables
+0xdec4d3  CustomLobbyRaceEditBox
+0xdec533  RaceLobbyVehicles
+0xdec54b  RaceLobbyVehicleSelections
+0xdec59b  CustomLobbyStartRaceEdit
+0xdecc5b  GameTypeIsTimeAttack
+0xded2db  LeaderboardIsRanked
+0xded9a3  CancelMatchMaking
+0xdedb7b  SelectPlayerDetailsFromRankedLeaderboard
+0xdedd63  ResetLastRacePlayedWasMatchMaking
+0xdedd8b  CheckMatchMakingAutoStart
+0xdeddbb  GetMatchMakingCountDownTime
+0xdedddb  StartMatchMaking
+0xdeddf3  SetRankedOption
+0xdede03  SetCasualOption
+0xdee09b  CanExtendRaceLobbyTimeout
+0xdee19b  SetCustomRaceLobbyTimeout
+0xdee233  AddAllCustomTicketVehicles
+0xdee2e3  SelectNextCustomGameTypeWithAny
+0xdee303  SelectPrevCustomGameTypeWithAny
+0xdee363  SelectNextCustomGameType
+0xdee383  SelectPrevCustomGameType
+0xdee473  SelectNextCustomGameType2
+0xdee493  SelectPrevCustomGameType2
+0xdee60b  GetCustomGameTypeNum
+0xdeea33  PopulateCustomTickets
+0xdeea4b  UpdateCustomGameFromRaceLobby
+0xdeede3  MatchMakingInProgress
+0xdeedfb  CancelMatchMakingAndLeaveGroup
+0xdeee2b  IsMatchMakingPrefGlobal
+0xdeee43  ToggleMatchMakingPref
+0xdeee5b  SaveMatchMakingPref
+0xdef0b3  SetMatchMakingPreferenceFromProfile
+0xdef0db  RoomMatchMakingPreferenceGlobal
+0xdef133  IsRoomInRankedStandardGame
+0xdef153  IsRoomInRankedEliminatorGame
+0xdef173  IsRoomInCasualStandardGame
+0xdef193  IsRoomInCasualEliminatorGame
+0xdef313  HideCustomRaceLobbyTimer
+0xdef453  UpdateOnlineLobby
+0xdef483  GetRaceLobbyPlayerCount
+0xdef693  GetNumPlayersInRaceLobby
+0xdef70b  GetTrackStringFromTicket
+0xdef72b  MatchMadeGameTypeString
+0xdef783  GotMatchMakingTicket
+0xdef7e3  GetSelectedTicket
+0xdef933  GetSelectedPlayerRankedGamesString
+0xdef95b  GetSelectedPlayerCasualGamesString
+0xdefac3  TicketNumberofLaps
+0xdefadb  TicketTrackName
+0xdefaeb  TicketImageName
+0xdefafb  TicketBestMedal
+0xdefb0b  TicketBestSkill
+0xdefb1b  TicketBestSpeed
+0xdefb2b  TicketBestAggression
+0xdefc43  PopulateGUITickets
+0xdefc5b  PopulateGUITicketIcons
+0xdefd0b  SetOnlineLobby
+0xdefd1b  InNoLobby
+0xdefd6b  ApplyConfigFromTicket
+0xdefd83  SetSelectedTicket
+0xdefe5b  TicketIsSpeedRace
+0xdefe73  TicketIsStandardEvent
+0xdefe8b  TicketIsElminatorEvent
+0xdefea3  TicketIsAggressionEvent
+0xdefebb  TicketIsSkillEvent
+0xdefed3  TicketIsSpeedEvent
+0xdefeeb  TicketIsMotorstormEvent
+0xdeff03  TicketIsUnlocked
+0xdeffeb  TicketClassAvailable
+0xdf0003  TicketClassSelectable
+0xdf049b  FillRankedLeaderboardTable
+0xdf04db  SetBoardTypeToRanked
+0xdf0e2d  Online.ranked.xp
+0xdf1255  f_casual_rig_LV01
+0xdf16ad  ranked gold
+0xdf16bd  ranked silver
+0xdf16cd  ranked bronze
+0xdf16dd  ranked players beaten
+0xdf16f5  ranked winning streak
+0xdf170d  ranked games played
+0xdf1725  casual games played
+0xdf2105  online.ranked.golds
+0xdf211d  online.ranked.silvers
+0xdf2135  online.ranked.bronzes
+0xdf214d  online.ranked.playersbeaten
+0xdf216d  online.ranked.longwinningstreak
+0xdf218d  online.ranked.gamesplayed
+0xdf21ad  online.casualgamesplayed
+0xdf24ae  Game Type Set To GAMETYPE_RANKED_ONLINE in CreateOnlineGameConfig
+0xdf24f6  Game Type Set To GAMETYPE_CASUAL_ONLINE in CreateOnlineGameConfig
+0xdf2dfa  wreckreation-leaderboards-ranked.gui
+0xdf2fbb  online.wreckFreeRankedRaces
+0xdf36bb  ** LOAD RACE start of world scene tracking data **
+0xdf36f3  ** LOAD RACE end of world scene tracking data **
+0xdf3e07  Online.ranked.golds
+0xdf3e1f  Online.ranked.silvers
+0xdf3e37  Online.ranked.bronzes
+0xdf3e4f  Online.ranked.playersbeaten
+0xdf3e6f  Online.ranked.longwinningstreak
+0xdf3e8f  Online.ranked.gamesplayed
+0xdf3eaf  Online.casualgamesplayed
+0xdf3eff  Online.ranked.fullracecompleted
+0xdf5b05  Ticket
+0xdf5b0d  Ticket_Settings
+0xdfacd9  f_casual_rig
+0xe00fe5  GameModeTickets
+0xe01165  mediusUniverse
+0xe0310f  BACK2BACK_TICKETS
+0xe03127  SINGLE_TICKET
+0xe044cf  f_casual_rig_LV03
+0xe045d7  f_casual_rig_lv03
+0xe05594  f_casual_rig_LV01
+0xe06381  Ticket
+0xe06389  TicketTitle
+0xe063b9  Ticket_Settings
+0xe06451  Ticket_Source
+0xe06471  Ticket_Type
+0xe06491  online_ranked
+0xe0790c   # Setting Online Lobby to %d # 
+0xe07b5c  Room is in Custom Race Lobby and the Local player is Leaving
+0xe07b9c  **** Room is NOT in CUSTOM RACE LOBBY But online lobby is 2** 
+0xe07bdc  Room is in MATCHING MAKING Race Lobby and the Local player is Leaving. Return 1 to go back to wreckreaction online
+0xe0806d  Lobby_ticket_
+0xe08c28  MediusUpdateClientState(LeftGameWorld) failed at %s (MediusErrorCode = %d)
+0xe08f48  ** Populating Game from Ticket **
+0xe08f70  Ticket Name is %s
+0xe08f88  Ticket Track Name is %s
+0xe08fa0  Ticket Env Name is %s
+0xe08fb8  Ticket Laps is %d
+0xe08fd0  Ticket Race Type is %d
+0xe09098  Action function Populate Game From Ticket **
+0xe09238  DownloadNPTicket()
+0xe0981b  --------------Ranked Game Stats Pre Race------------
+0xe0987b  Ranked Winning Streak
+0xe098b3  Ranked Quit Count
+0xe0998c  --------------Ranked Game Quit Race Stats------------
+0xe099c5  Ranked Quit Count
+0xe09a1c  Ranked quit count decremented to %i
+0xe09c00  --------------Ranked Game Stats Post Race------------
+0xe09c3f  Ranked Quit Count
+0xe09ce0  Ranked up baby! Immune for 3 races
+0xe09f5b  f_casual_rig_LV01
+0xe09f93  N3evo6online8UniverseE
+0xe09fc3  N3evo6online5LobbyE
+0xe0a13b  Using SVO URL from universe %s
+0xe0a493  Logging into Medius Server with NP Ticket
+0xe0a7db  Already connected to A least populated Lobby.Exiting early from function
+0xe0a9ee  Ranked Game
+0xe0aad8  * Ranked Game 
+0xe0adcd  Found Least Populated Lobby
+0xe0aded  No Result from Join Least Populated Lobby, Try again?
+0xe0ae25  Failed to Join Least Populated Lobby in callback %d
+0xe0b165  TheUniverse Selected is %s
+0xe0b185  Found %s in universe list
+0xe0b1e5  Added '%s' to the Universe List
+0xe0b39d  Universe has no SVO URL
+0xe0b3c5  Universe list complete
+0xe0b3dd  There are no Universes
+0xe0b3f5  MediusGetUniverseInformation
+0xe0b415  MediusGetUniverseInformation() failed
+0xe0cbc7  Request NP Ticket succeeded
+0xe0cbe7  Request NP Ticket Failed 0x%08x
+0xe0d3f7  Room is in Standard Ranked Game
+0xe0d417  Room is in Eliminator Ranked Game
+0xe0d941  Create Np Room with world ID %d
+0xe0da31  Get NP Ticket Failed
+0xe0da49  Get NP Ticket succeeded
+0xe0daa1  sceNpManagerRequestTicket2() failed. Error code = 0x%08x
+0xe0ef91  ROOM_IN_MATCHMAKE
+0xe0efa9  ROOM_IN_MATCHMAKE_NOMATCH
+0xe0efc9  ROOM_IN_RANKED_STANDARD
+0xe0efe1  ROOM_IN_RANKED_ELIMINATOR
+0xe0f001  ROOM_IN_CASUAL_STANDARD
+0xe0f019  ROOM_IN_CASUAL_ELIMINATOR
+0xe0f039  ROOM_IN_CUSTOM_GAME
+0xe0f051  ROOM_IN_RANK_SUMMARY
+0xe0f0c9  FillRankedCachePage
+0xe0f1b9  SetupRankedLeaderboard
+0xe0f649  %s: Setting Ranked score
+0xe0ffc2  ***** Setting CustomRaceLobbyTimeout *****
+0xe1196d  ** VETOED TICKET IS %d
+0xe11985  *************New Race Ticket Is %d******** 
+0xe119b5  *************New Race Ticket Type %d*******
+0xe119e5  Ticket Vetoed, Adding %d seconds
+0xe11a0d  First Ticket. Set Start time to %d
+0xe11b0d  Medius Universe is %s
+0xe1237e  SVBrowser::TicketLogin() could not find URI 'ticketLogin'
+0xe123c6  SVBrowser::TicketLogin() 'TicketLoginURI' is not secure!
+0xe1283f  Online.ranked.ranking
+0xe12857  Online.ranked.playersbeaten
+0xe12877  Querying ranked, local score is %d
+0xe128c7  Getting ranked leaderboard
+0xe128e7  leaderboard/ranked
+0xe182ed  auto_world_cam
+0xe182fd  data/camera_config_files/world_cameras/%s
+0xe1832d  data/camera_config_files/world_cameras/default_world_cameras.txt
+0xe183bd  world camera
+0xe195c2  worlds/%s_%s_objects.rpk
+0xe19602  worlds/
+0xe25c87  worldviewprojectionprevious
+0xe25cc7  worldviewprojection
+0xe25d07  worldviewprevious
+0xe25d47  worldview
+0xe25d67  worldtoviewprojtexspace
+0xe25de7  billboardtoworld
+0xe2600c  worldspace
+0xe404f7  worldFromModelFeedbackGain
+0xe43f27  worldCinfo
+0xe48ebf  worldCinfo
+0xe4e6ef  worldCinfo
+0xe5432f  worldCinfo
+0xe5a207  worldCinfo
+0xe601c7  worldCinfo
+0xe66187  worldCinfo
+0xe6b387  worldFromModel
+0xe6d51f  worldCinfo
+0xe74f41  worldCinfo
+0xe7ccab  worldCinfo
+0xe84c75  worldCinfo
+0xe8ce47  worldCinfo
+0xe95472  worldCinfo
+0xe9dbb5  worldCinfo
+0xea3c50  worldFromModelWeight
+0xea4908  worldUpWS
+0xea7320  worldCinfo
+0xead8eb  worldFromModelWeight
+0xeae5d3  worldUpWS
+0xeb1083  worldCinfo
+0xeb77ae  worldFromModel
+0xeb7b66  worldFromModelWeight
+0xeb88d6  worldUpWS
+0xeb8dde  worldUpAxis
+0xebbc9e  worldCinfo
+0xec25f9  worldFromModel
+0xec29b9  worldFromModelWeight
+0xec3731  worldUpWS
+0xec3c79  worldUpAxis
+0xec6af1  worldCinfo
+0xecd724  worldFromModel
+0xecdaf4  worldFromModelWeight
+0xece86c  worldUpWS
+0xecee04  worldUpAxis
+0xed1ebc  worldCinfo
+0xed8bcf  worldFromModel
+0xed8f9f  worldFromModelWeight
+0xed9d17  worldUpWS
+0xeda2bf  worldUpAxis
+0xedd37f  worldCinfo
+0xee40ea  worldFromModel
+0xee44ba  worldFromModelWeight
+0xee5232  worldUpWS
+0xee5822  worldUpAxis
+0xee8922  worldCinfo
+0xeef735  worldFromModel
+0xeefb05  worldFromModelWeight
+0xef087d  worldUpWS
+0xef0fa5  worldUpAxis
+0xef40a5  worldCinfo
+0xefb9d8  worldFromModel
+0xefbda8  worldFromModelWeight
+0xefcb78  worldUpWS
+0xefd308  worldUpAxis
+0xefda90  worldUpAxisIndex
+0xf00818  worldLock
+0xf009f8  worldDeletionListeners
+0xf00a30  worldPostSimulationListeners
+0xf00a50  worldPostIntegrateListeners
+0xf00a70  worldPostCollideListeners
+0xf013a8  worldCinfo
+0xf0990b  worldFromModel
+0xf09d6b  worldFromModelWeight
+0xf0aaab  worldUpWS
+0xf0b343  worldUpAxis
+0xf0b9e3  worldUpAxisIndex
+0xf0e76b  worldLock
+0xf0e94b  worldDeletionListeners
+0xf0e983  worldPostSimulationListeners
+0xf0e9a3  worldPostIntegrateListeners
+0xf0e9c3  worldPostCollideListeners
+0xf0f313  worldCinfo
+0xf17a8e  worldFromModel
+0xf17eee  worldFromModelWeight
+0xf18d0e  worldUpWS
+0xf19586  worldUpAxis
+0xf19c66  worldUpAxisIndex
+0xf1ca06  worldLock
+0xf1cbe6  worldDeletionListeners
+0xf1cc1e  worldPostSimulationListeners
+0xf1cc3e  worldPostIntegrateListeners
+0xf1cc5e  worldPostCollideListeners
+0xf1d5ae  worldCinfo
+0xf2643c  worldFromModel
+0xf26a04  worldFromModelWeight
+0xf27984  worldUpWS
+0xf282ac  worldUpAxis
+0xf2894c  worldUpAxisIndex
+0xf2b774  worldLock
+0xf2b974  worldDeletionListeners
+0xf2b9ac  worldPostSimulationListeners
+0xf2b9cc  worldPostIntegrateListeners
+0xf2b9ec  worldPostCollideListeners
+0xf2c36c  worldCinfo
+0xf353e2  worldFromModel
+0xf359aa  worldFromModelWeight
+0xf36952  worldUpWS
+0xf3727a  worldUpAxis
+0xf3791a  worldUpAxisIndex
+0xf3a742  worldLock
+0xf3a942  worldDeletionListeners
+0xf3a97a  worldPostSimulationListeners
+0xf3a99a  worldPostIntegrateListeners
+0xf3a9ba  worldPostCollideListeners
+0xf3b34a  worldCinfo
+0xf46bf8  worldLock
+0xf47baa  worldLock
+0xf47de2  worldDeletionListeners
+0xf47e1a  worldPostSimulationListeners
+0xf47e3a  worldPostIntegrateListeners
+0xf47e5a  worldPostCollideListeners
+0xf48e30  TtworldDelCb
+0xf4c8d2  worldCinfo
+0xf50ec8  MediusNumGameWorldsPerLobbyWorldExceeded
+0xf51d0b  SetUniversePasswordURI
+0xf51da3  TicketLoginURI
+0xf51f2b  spUpdateTicketURI
+0xf52373  18TicketUpdateModule
+0xf5239b  SP_UpdateTicket
+0xf523ab  ../../source/TicketUpdateModule.cpp
+0x10d2bf7  f_casual_rig_LV03

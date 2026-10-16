@@ -1,0 +1,6 @@
+__pycache__/
+*.elf
+EBOOT.*
+ghidra_proj/
+work/
+.pytest_cache/

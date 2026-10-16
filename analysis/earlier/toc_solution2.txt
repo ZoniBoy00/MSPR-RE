@@ -1,0 +1,3 @@
+MediusLoginFailed                                  addr=0xf609e8 lwz-r2-cands=10746 common=10746
+MediusGetPlayerInfo() failed                       addr=0xe1a223 lwz-r2-cands=10746 common=0
+NONE

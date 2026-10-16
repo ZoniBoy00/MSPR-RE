@@ -1,0 +1,1 @@
+vtable_addr | class (mangled) | #vfns | first funcs

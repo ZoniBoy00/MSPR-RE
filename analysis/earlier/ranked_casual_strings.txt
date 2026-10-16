@@ -1,0 +1,145 @@
+0xdeb183  Online.ranked.ranking
+0xdeb92b  GameTypeSetFestival
+0xdeb943  GameTypeSetWreckreationFreePlay
+0xdeb963  GameTypeSetWreckreationSplitScreen
+0xdeb98b  GameTypeSetWreckreationOnline
+0xdeb9ab  GameTypeSetRankedOnline
+0xdeb9c3  GameTypeSetCasualOnline
+0xdeb9db  GameTypeSetDemo
+0xdeb9eb  GameTypeSetDemoSplitScreen
+0xdeba0b  GameTypeSetTimeTrial
+0xdeba23  GameTypeSetGui
+0xdeba33  GameTypeReset
+0xdecc5b  GameTypeIsTimeAttack
+0xded2db  LeaderboardIsRanked
+0xded9a3  CancelMatchMaking
+0xded9d3  LeaveCustomGame
+0xded9e3  LeaveCustomGameWithParty
+0xdedb7b  SelectPlayerDetailsFromRankedLeaderboard
+0xdedd63  ResetLastRacePlayedWasMatchMaking
+0xdedd8b  CheckMatchMakingAutoStart
+0xdeddbb  GetMatchMakingCountDownTime
+0xdedddb  StartMatchMaking
+0xdeddf3  SetRankedOption
+0xdede03  SetCasualOption
+0xdedf63  JoinCustomGame
+0xdee17b  UpdateCustomGamesListTable
+0xdee1eb  SelectNextCustomGameTrack
+0xdee20b  SelectNextCustomGameTrackWithAny
+0xdee253  SelectPrevCustomGameTrack
+0xdee273  SelectPrevCustomGameTrackWithAny
+0xdee2e3  SelectNextCustomGameTypeWithAny
+0xdee303  SelectPrevCustomGameTypeWithAny
+0xdee363  SelectNextCustomGameType
+0xdee383  SelectPrevCustomGameType
+0xdee3d3  SelectNextCustomGameAmbience
+0xdee3f3  SelectPrevCustomGameAmbience
+0xdee413  GetCustomGameAmbienceNum
+0xdee473  SelectNextCustomGameType2
+0xdee493  SelectPrevCustomGameType2
+0xdee4e3  SelectNextCustomGameAmbience2
+0xdee503  SelectPrevCustomGameAmbience2
+0xdee53b  GetCustomGameAmbienceNum2
+0xdee5cb  GetCustomGameTrackFilter
+0xdee5eb  GetSelectedCustomGameTrack
+0xdee60b  GetCustomGameTypeNum
+0xdee623  GetCustomGameLapsOrElimTime
+0xdee95b  FindCustomGames
+0xdee983  CreateCustomGame
+0xdeea4b  UpdateCustomGameFromRaceLobby
+0xdeed43  CustomGameCreated
+0xdeede3  MatchMakingInProgress
+0xdeedfb  CancelMatchMakingAndLeaveGroup
+0xdeee1b  IsCustomGame
+0xdeee2b  IsMatchMakingPrefGlobal
+0xdeee43  ToggleMatchMakingPref
+0xdeee5b  SaveMatchMakingPref
+0xdef0b3  SetMatchMakingPreferenceFromProfile
+0xdef0db  RoomMatchMakingPreferenceGlobal
+0xdef0fb  IsRoomInCustomGame
+0xdef133  IsRoomInRankedStandardGame
+0xdef153  IsRoomInRankedEliminatorGame
+0xdef173  IsRoomInCasualStandardGame
+0xdef193  IsRoomInCasualEliminatorGame
+0xdef72b  MatchMadeGameTypeString
+0xdef783  GotMatchMakingTicket
+0xdef933  GetSelectedPlayerRankedGamesString
+0xdef95b  GetSelectedPlayerCasualGamesString
+0xdef983  GetSelectedPlayerCustomGamesString
+0xdeff8b  CustomGameVehicleClassAvailable
+0xdf049b  FillRankedLeaderboardTable
+0xdf04db  SetBoardTypeToRanked
+0xdf0e2d  Online.ranked.xp
+0xdf1255  f_casual_rig_LV01
+0xdf16ad  ranked gold
+0xdf16bd  ranked silver
+0xdf16cd  ranked bronze
+0xdf16dd  ranked players beaten
+0xdf16f5  ranked winning streak
+0xdf170d  ranked games played
+0xdf1725  casual games played
+0xdf173d  custom games played
+0xdf2105  online.ranked.golds
+0xdf211d  online.ranked.silvers
+0xdf2135  online.ranked.bronzes
+0xdf214d  online.ranked.playersbeaten
+0xdf216d  online.ranked.longwinningstreak
+0xdf218d  online.ranked.gamesplayed
+0xdf21ad  online.casualgamesplayed
+0xdf24ae  Game Type Set To GAMETYPE_RANKED_ONLINE in CreateOnlineGameConfig
+0xdf24f6  Game Type Set To GAMETYPE_CASUAL_ONLINE in CreateOnlineGameConfig
+0xdf2dfa  wreckreation-leaderboards-ranked.gui
+0xdf2fbb  online.wreckFreeRankedRaces
+0xdf3e07  Online.ranked.golds
+0xdf3e1f  Online.ranked.silvers
+0xdf3e37  Online.ranked.bronzes
+0xdf3e4f  Online.ranked.playersbeaten
+0xdf3e6f  Online.ranked.longwinningstreak
+0xdf3e8f  Online.ranked.gamesplayed
+0xdf3eaf  Online.casualgamesplayed
+0xdf3eff  Online.ranked.fullracecompleted
+0xdfacd9  f_casual_rig
+0xe044cf  f_casual_rig_LV03
+0xe045d7  f_casual_rig_lv03
+0xe05594  f_casual_rig_LV01
+0xe06491  online_ranked
+0xe08c28  MediusUpdateClientState(LeftGameWorld) failed at %s (MediusErrorCode = %d)
+0xe096e0  player quit race in custom game, Status is Idle and Quit
+0xe0981b  --------------Ranked Game Stats Pre Race------------
+0xe0987b  Ranked Winning Streak
+0xe098b3  Ranked Quit Count
+0xe0998c  --------------Ranked Game Quit Race Stats------------
+0xe099c5  Ranked Quit Count
+0xe09a1c  Ranked quit count decremented to %i
+0xe09c00  --------------Ranked Game Stats Post Race------------
+0xe09c3f  Ranked Quit Count
+0xe09ce0  Ranked up baby! Immune for 3 races
+0xe09f5b  f_casual_rig_LV01
+0xe0a9ee  Ranked Game
+0xe0aa26  RANKED Match Making game, Average Rank XP of %d. Total %d   players %d
+0xe0aad8  * Ranked Game 
+0xe0d3f7  Room is in Standard Ranked Game
+0xe0d417  Room is in Eliminator Ranked Game
+0xe0ef91  ROOM_IN_MATCHMAKE
+0xe0efa9  ROOM_IN_MATCHMAKE_NOMATCH
+0xe0efc9  ROOM_IN_RANKED_STANDARD
+0xe0efe1  ROOM_IN_RANKED_ELIMINATOR
+0xe0f001  ROOM_IN_CASUAL_STANDARD
+0xe0f019  ROOM_IN_CASUAL_ELIMINATOR
+0xe0f039  ROOM_IN_CUSTOM_GAME
+0xe0f051  ROOM_IN_RANK_SUMMARY
+0xe0f0c9  FillRankedCachePage
+0xe0f1b9  SetupRankedLeaderboard
+0xe0f649  %s: Setting Ranked score
+0xe0f8e9  %s: NPSCORE_BOARD_RANKED
+0xe10553  PLAYER QUITTED THIS RANKED GAME. Adding penalty points = %d, Quits = %d
+0xe121ee  location.gameMode
+0xe1283f  Online.ranked.ranking
+0xe12857  Online.ranked.playersbeaten
+0xe12877  Querying ranked, local score is %d
+0xe128c7  Getting ranked leaderboard
+0xe128e7  leaderboard/ranked
+0xf50ec8  MediusNumGameWorldsPerLobbyWorldExceeded
+0xf535fd  gameMode
+0xf5372d  gameMode
+0x10d2bf7  f_casual_rig_LV03

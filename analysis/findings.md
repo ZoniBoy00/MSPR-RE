@@ -1,0 +1,106 @@
+# Findings
+
+What was learned from live play on the running server (RPCS3 with RPCN accounts), from the first real PS3 login attempts and from the move of Horizon to .NET 10. Evidence tags as in the [reverse engineering report](reverse-engineering.md): **[EBOOT]** decompiled game code, **[LIVE]** seen on the wire or in the logs, **[INFERENCE]**.
+
+## 1. Ghost download: the request is `leaderboard/ghost` **[LIVE]**
+
+The request of the game is
+
+```text
+GET /motorstormpr/leaderboard/ghost?location.gameMode=9&location.vehicle=4&location.track=6&account=61025
+```
+
+not `/motorstormpr/ghost` as it was inferred from the code. The address is the Time Attack leaderboard address with `/ghost` added, so a server that treats every `leaderboard/*` path as a leaderboard answers it with an empty leaderboard and the game shows "An error occurred while communicating with the server". Answered with
+
+```xml
+<XML>
+    <ghost>
+        <data>BASE64 of the stored ghost</data>
+    </ghost>
+</XML>
+```
+
+the game accepts the ghost, saves it and lists it in Time Attack (verified with a second account in RPCS3, Colossus Canyon, Rally Car, a 68 800-byte ghost). The upload (`finishGame` body, `ghostLength`) is unchanged. Fix: commit `2d47d76`.
+
+## 2. Speed and Volcano Weekend, verified **[LIVE]**
+
+**The result.** A Speed Weekend race is `finishGame` with `location.gameMode=11` (Volcano Weekend is 10, not seen yet). The fields of a won run:
+
+```text
+location.track=14  location.vehicle=1  endState=1  endNormal=1  won=1  position=1  laps=1
+bestTime=32868  timeRemaining=32868   (milliseconds left on the countdown, more is better)
+totalRaceTime=72132  totalRaceTimeInFirst=72132  boostDistance  distanceTravelled  furthestBoostDistance  version=2
+```
+
+`position` is 1 for a win; the finishing place of a run against the clock is only `won` (1 or not). A run that was lost or abandoned reports `position=100`, `bestTime=0`, `laps=0` and a short `totalRaceTime`. **Position 100 means "did not finish"** in every mode.
+
+**The bookkeeping report.** About a second after a won Weekend race (and again after a later login) the game posts a second `finishGame` with only `bestTime`, `position=100`, `laps=0` and `version=2`, no `totalRaceTime`. It repeats the best time, it is not a race. The server stores it but does not list it (`isRace` in `server/src/db/types.ts`).
+
+**The board.** After the race the game asks `leaderboard/speed?...&location.track=14&location.vehicle=1&stat.timeRemaining=32868&stat.vehicle=1`, with and without `friends=true`. Rows are `accountName`, `accountId`, `timeRemaining`, `rank`, `vehicle`, `currentPlayer`, `estimated`, most time left first. Seen working with two accounts. On opening the menu it asks the board of every Weekend track; `myPosition=true` came with the Time Attack boards too and the answer without it was accepted.
+
+**"Somebody beat your time".** At every login the game asks `GET speed-weekend/beaten?` (no parameters). Answered with
+
+```xml
+<XML>
+    <beaten_times>
+        <time accountName="RacerTwo" account="61027" time="34874" oldTime="32868" track="14" vehicle="1"/>
+    </beaten_times>
+</XML>
+```
+
+the game marks the ticket of that track with a **red** marker and bar (under "Target Time"). While the player looks at that board the game calls `speed-weekend/viewed?location.track=14&location.vehicle=1` about every four seconds; after that the marker is **green** at the next look. The server therefore answers `beaten` with the fastest other time that is better than the player's best and was posted after the player's own race or last `viewed`, and `viewed` clears it (`weekend_views` table). An empty list is PS Rewired's idle answer (`status` 20407). The text the game shows for a beaten time was not read, so the numbering of `vehicle` (the decompiled parser stores it minus one) is still unconfirmed; the server sends the same number as in the leaderboard rows.
+
+## 3. Online races with two players **[LIVE]**
+
+Custom and Ranked races between two RPCS3 accounts ran to the end; both accounts posted a result, the summary said "everyone posted a result". The race list needs `placedN` / `playersBeatenBy` for the place; the `position` of both racers of a two-player race is 2. Against the clock (Time Attack, Speed and Volcano Weekend) there is no place.
+
+## 4. The NP ticket and its signature **[LIVE, EBOOT]**
+
+The ticket the game posts to `https:ticket/login` (and sends in the Medius `TicketLoginRequest`) is an XI5 ticket:
+
+| Part | Content |
+|---|---|
+| header (8 bytes) | version (2 bytes, `2101` = 2.1), 4 bytes, ticket length (2 bytes) |
+| body field | `0x3000`, length (2), the body: serial, issuer, issue and expiry time, user id, online id (32 bytes), country, domain, service id, title id ... |
+| footer field | `0x3002`, length (2): a binary field with the signer name (`RPCN`, or a key id for a PSN ticket) and a binary field with the signature |
+
+Signatures, as Horizon checks them at the Medius login:
+
+- **RPCN** (signer `RPCN`): ECDSA on the curve secp224k1, hash SHA-224 of the **whole body field including its 4-byte field header** (bytes 8 to 8 + 4 + length), RPCN's public key `ME4wEAYH...` (in `XI5Ticket.cs`). The signature is a DER sequence of two integers.
+- **PSN** (a real PS3, signature of 56 bytes): ECDSA secp192r1, SHA-1 of **everything before the signature** (header included), Sony's title key (`DefaultSigningKey`, X `39c62d06...`, Y `a5d578b5...`). The signature may carry one or two stray bytes behind the DER sequence.
+- Ticket version 4.0 has a 10-byte header and an unsolved hash; it is not checked.
+
+`server/src/svo/ticket.ts` does the same check for the SVO login and writes `ticket: {signer, valid, reason}` into the `login` event; it only logs by default (`svo.requireSignedTickets`). Six RPCS3 logins verified (`signer: rpcn, valid: true`). The ticket in `server/test/fixtures/svo` does **not** verify (the captured ticket was altered, probably redacted), so the tests build tickets with their own keys. The PSN path is not yet seen on a real ticket.
+
+**The ticket is the only way to tell RPCS3 from a real PS3.** Both send `SVO-Platform: PS3`, the same `Content-Type` and no User-Agent.
+
+## 5. First observations of a real PS3 **[LIVE]**
+
+- A real PS3 (PSN id, signer a PSN key) logs in to SVO, accepts the EULA and loads the leaderboards like RPCS3.
+- It asks this server's DNS for about 250 PlayStation Network names (profiles, authentication, matching, STUN). RPCS3 asks for none. `dns.forwardNames` now forwards `playstation.net`, `playstation.com` and `sonyentertainmentnetwork.com` upstream; names of anything else are refused.
+- Ranked games with a PS3 player ended with "NO RESULT": the results arrive only right after the next SVO login (`result.queued` events). Not caused by the DNS rate limit (the firewall limit dropped no packet). The cause is still open; a full PS3 race with the request log is needed.
+- A PS3 player was banned automatically by the anti-cheat because the saved results after login looked like impossible races; see diagnostics. The anti-cheat is off on the live server.
+
+## 6. Horizon on .NET 10 **[LIVE]**
+
+.NET 6 is out of support. Horizon builds for `net10.0` with these changes and pitfalls:
+
+- C# 14 makes `field` a keyword inside a property accessor (`CookieParser.cs`): rename the variable.
+- `XI5Ticket` uses `[GeneratedRegex]` on .NET 7+, so the class must be `partial`.
+- **Enumerating an empty `DefaultChannelGroup` never ends on .NET 8+** (dotnet/runtime #105576). `MMS.Tick` did it as soon as the last MMS client left, spun one thread at 100 % and stopped the whole Medius tick loop; every answer of every server stopped, and the game stayed on "Searching for Ranked Game". Always take `Group.ToArray` first (the other servers already did, MMS did not).
+- Named machine-wide mutexes (`Global\...`) cannot be created in the hardened systemd service (`The system cannot open the device or file specified`); GeoIP and the certificate chain were never initialised. `MultiServerLibrary/InitLock.cs` falls back to a process-local mutex.
+- Finding such a hang: `dotnet-stack report -p <pid>` shows the managed stacks. With `PrivateTmp=yes` the diagnostic socket is in the service's private `/tmp`; point `TMPDIR` at a short symlink to it (the socket path is limited to 108 characters). A thread at 100 % CPU in `top -H` is the one to look for.
+
+## 7. Other projects that revive this game **[research]**
+
+No public project documents this game's SVO or Medius protocol in detail; what is known here is ahead of what could be found.
+
+| Project | What it offers |
+|---|---|
+| PS Rewired (psrewired.com, title 21624) | Real PS3 works with DNS only (67.222.156.250 plus 8.8.8.8, UPnP on); custom match worked in 2022, Ranked/Casual not confirmed. Closed source as far as could be verified. RPCS3 host `motorstorm2ps3.online.scee.com`. |
+| PSONE | DNS 185.194.142.4, real PS3 and PSN account, no jailbreak; MotorStorm among the games; closed. |
+| PSORG (`PSOnlineReturnalGaming`) and `GitHubProUser67/PSHome-MultiServer` | MitmDNS, ApacheNet, Horizon (Jump-Suit fork), SVO; lists MotorStorm PR as RPCS3 cross-play only; the RPCS3 wiki says its SVO does not work for this game. `packet-captures` (PS3 folder) and `uya-medius-encryption` are Medius helpers. |
+| `xtvaser/clank` (deprecated), `LittleBigRefresh/NPTicket` | A Medius 1.5-1.8 emulator; a C# NP ticket reader and verifier. |
+| `RipleyTom/rpcn` | RPCN, the RPCS3 NP server; its FAQ says it does not work for real consoles. |
+
+RPCS3 issue 13126 (fixed October 2025): Ranked/Custom races with ten or more players failed to start for RPCS3 players on PS Rewired; the "error communicating with the server" dialog appeared on real PS3s too.

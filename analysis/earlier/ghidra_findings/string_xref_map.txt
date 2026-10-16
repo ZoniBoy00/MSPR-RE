@@ -1,0 +1,9 @@
+function 0x2042c4:
+  0x2043f4 -> 0x208dd4 : Checking for downloaded ghost for account %s
+
+function 0x204428:
+  0x2046d8 -> 0x208dd4 : Checking for downloaded ghost for account %s
+
+function 0x204a04:
+  0x204a08 -> 0x208dd4 : Checking for downloaded ghost for account %s
+

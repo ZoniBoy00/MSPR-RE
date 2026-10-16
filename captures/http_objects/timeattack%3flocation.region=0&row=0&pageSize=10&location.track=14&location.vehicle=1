@@ -1,0 +1,11 @@
+<XML>
+    <leaderboard>
+        <stats>
+            <userStats>
+                <user accountName="RemotePlayerD" accountId="90004" bestTime="13574" rank="1" vehicle="1" currentPlayer="0" ghostAvailable="0" estimated="0"/>
+                <user accountName="RemotePlayerB" accountId="90002" bestTime="14005" rank="2" vehicle="1" currentPlayer="0" ghostAvailable="0" estimated="0"/>
+                <user accountName="RemotePlayerC" accountId="90003" bestTime="20445" rank="3" vehicle="1" currentPlayer="0" ghostAvailable="0" estimated="0"/>
+            </userStats>
+        </stats>
+    </leaderboard>
+</XML>

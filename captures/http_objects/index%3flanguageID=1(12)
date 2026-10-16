@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<XML>
+    <URL_List>
+        <DATA dataType="URI" name="ticketLogin" value="https:ticket/login"/>
+        <DATA dataType="URI" name="finishGameURI" value="/game/finish"/>
+        <DATA dataType="URI" name="leaderboard/timeattack" value="/motorstormpr/leaderboard/timeattack"/>
+        <DATA dataType="URI" name="leaderboard/speed" value="/motorstormpr/leaderboard/speed"/>
+        <DATA dataType="URI" name="leaderboard/ranked" value="/motorstormpr/leaderboard/ranked"/>
+        <DATA dataType="URI" name="leaderboard" value="/motorstormpr/leaderboard"/>
+        <DATA dataType="URI" name="getRegion" value="/motorstormpr/getRegion"/>
+        <DATA dataType="URI" name="getEula" value="/motorstormpr/getEula"/>
+        <DATA dataType="URI" name="acceptEula" value="/motorstormpr/acceptEula"/>
+        <DATA dataType="URI" name="getAnnouncement" value="/motorstormpr/getAnnouncement"/>
+        <DATA dataType="URI" name="home" value="/motorstormpr/home"/>
+        <DATA dataType="URI" name="speed-weekend/beaten" value="/motorstormpr/speed-weekend/beaten"/>
+        <DATA dataType="URI" name="speed-weekend/viewed" value="/motorstormpr/speed-weekend/viewed"/>
+        <BROWSER_INIT name="init"/>
+    </URL_List>
+</XML>

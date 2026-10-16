@@ -1,0 +1,5 @@
+# Python 3.10+. Only what the tools import; nothing is needed to read the documents.
+scapy>=2.5            # capture tools, proxy, tests, pcap scripts
+cryptography>=42      # only tools/legacy/quic_initial_decrypt.py
+pytest>=8             # tests in tools/tests
+# pyghidra            # only for the Ghidra drivers (needs a Ghidra installation, GHIDRA_INSTALL_DIR)

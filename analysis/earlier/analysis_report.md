@@ -1,0 +1,968 @@
+# MSPR EBOOT.BIN static analysis
+
+ASCII strings: 73,644, UTF-16 strings: 9
+
+## Protocol-relevant ASCII strings
+
+- `   It is also possible for HTTP-layer timeout errors to be notified from the system process.`
+- ` # Setting Online Lobby to %d # `
+- ` ********** Online SVO Delegates being registered ************`
+- ` Room Status  %d`
+- ` Use hkPoolMemory if no memory manager is present or no custom memory `
+- ` players`
+- `### Setting Join Room Info ###`
+- `$svohttphttpsbuildidentifier: svoclient-nightly-3.03.200806061111 $`
+- `%s %s HTTP/1.0`
+- `%s's PlayerStats haven't been uploaded because the server connection has been lost`
+- `%s's PlayerStats haven't been uploaded because they haven't changed`
+- `%s: Adding dev ghost #%d`
+- `%s: Adding online ghost #%d`
+- `%s: Adding profile ghost #%d`
+- `%s: Error 0x%08x - NULL was specified to onlineId or npId.`
+- `%s: Leaderboard Filter %d`
+- `%s: NPSCORE_BOARD_RANKED`
+- `%s: OnlineId.data %s`
+- `%s: Retrieving ghost data`
+- `%s: Row %d, mediusAccountId %d, onlineName %s, ghost %s`
+- `%s: Score & Ghost not posted due to buffer problems.`
+- `%s: Setting Ranked score`
+- `%s: There is no leaderboard filter set.`
+- `* %s : PLAYER FINISHED RACE *`
+- `* %s : PLAYER QUIT RACE *`
+- `* Min Players`
+- `* Ranked Game `
+- `** LOAD RACE finished correcting the filenames for the ghost characters **`
+- `** Populating Game from Ticket **`
+- `** Updating Online Profile with offline stats etc **`
+- `** VETOED TICKET IS %d`
+- `*** Room Is going to custom Game ***`
+- `*** Sending message gui to room member`
+- `**** Race Over, Only player left racing ******`
+- `**** Room is NOT in CUSTOM RACE LOBBY But online lobby is 2** `
+- `***** Setting CustomRaceLobbyTimeout *****`
+- `****************Matching Room Message Callback ** event %d, errorCode %d, roomId %d`
+- `**************Matching Room Event Callback ** `
+- `*************New Race Ticket Is %d******** `
+- `*************New Race Ticket Type %d*******`
+- `*****Posting SCORES and GHOST data*****`
+- `***Room Blob - `
+- `**Error, requesting player that does not exist **`
+- `*.ticket`
+- `*Max Players Is %d`
+- `*OnlineUpdateThread: Main thread assumed dead, removing local player* `
+- `*SCE_NP_MATCHING2_ROOM_EVENT_Kickedout*`
+- `*SCE_NP_MATCHING2_ROOM_EVENT_MemberJoined  Member Joined Room*`
+- `*SCE_NP_MATCHING2_ROOM_EVENT_MemberJoined* Failed to get event data`
+- `*SCE_NP_MATCHING2_ROOM_EVENT_MemberLeft*`
+- `*SCE_NP_MATCHING2_ROOM_EVENT_MemberLeft* Failed to get event data`
+- `*SCE_NP_MATCHING2_ROOM_EVENT_RoomDestroyed*`
+- `*SCE_NP_MATCHING2_ROOM_EVENT_RoomOwnerChanged*`
+- `*SCE_NP_MATCHING2_ROOM_EVENT_RoomOwnerChanged* Failed to get event data`
+- `*SCE_NP_MATCHING2_ROOM_EVENT_UpdatedRoomDataInternal*`
+- `*SCE_NP_MATCHING2_ROOM_EVENT_UpdatedRoomDataInternal* Failed to get event data`
+- `*SCE_NP_MATCHING2_ROOM_EVENT_UpdatedRoomMemberDataInternal*`
+- `*SCE_NP_MATCHING2_ROOM_EVENT_UpdatedRoomMemberDataInternal* Failed to get event data`
+- `*SCE_NP_MATCHING2_ROOM_EVENT_UpdatedSignalingOptParam*`
+- `*Setting new room Information when already in a room*`
+- `*UpdateRoomInfo Data Count %d*`
+- `--------------End of Stats Pre Race------------`
+- `--------------Ranked Game Quit Race Stats------------`
+- `--------------Ranked Game Stats Post Race------------`
+- `--------------Ranked Game Stats Pre Race------------`
+- `----------Started OnlineUpdate (SCERT) thread----------`
+- `----------Stopped OnlineUpdate (SCERT) thread----------`
+- `../../source/CHttp.cpp`
+- `../../source/HttpUtils.cpp`
+- `../../source/LoginTagModule.cpp`
+- `../../source/TicketUpdateModule.cpp`
+- `14LoginTagModule`
+- `14MessageHandlerIN3evo6online24NetPlayerMsgUpdateParamsEE`
+- `16JoiningRoomState`
+- `18TicketUpdateModule`
+- `20OcclusionStatsViewer`
+- `27CreatingAndJoiningRoomState`
+- `Accept Invite Success, room id is %d`
+- `Account Stats uploaded failed`
+- `Account Stats uploaded to server`
+- `Action function Populate Game From Ticket **`
+- `Action vehicle ghosting`
+- `Action_Veh_Ghosting`
+- `AddAllCustomTicketVehicles`
+- `AddCustomVehicleClass`
+- `Adding Room Member : %s`
+- `Adding player to vector %s, ClientIndex %d`
+- `All Players Ready`
+- `AllOnlinePlayersFinishedRace`
+- `Already connected to A least populated Lobby.Exiting early from function`
+- `ApplyConfigFromTicket`
+- `ApplyConfigMultiplayer`
+- `BACK2BACK_TICKETS`
+- `BinkMoviePlayer open failed`
+- `BuildStatsTable`
+- `CB Error Leaving Room`
+- `CB_GetNpRoomExternalData Failed  to get event data`
+- `CB_GetNpRoomExternalData Failed to get event data`
+- `CB_GetNpRoomExternalData Successful`
+- `CB_SetNpRoomExternalData Successful`
+- `CLIENT.PhAn.MotorStorm`
+- `CONSTRAINT_TYPE_CUSTOM`
+- `Cache statistics are only available when "HK_CACHE_STATS" has been defined!`
+- `CallPostNpGhostCB`
+- `Calling get top leaderboard in onlineonline`
+- `CanExtendRaceLobbyTimeout`
+- `CancelMatchMaking`
+- `CancelMatchMakingAndLeaveGroup`
+- `Cannot find ticket with name %s`
+- `CheckMatchMakingAutoStart`
+- `Checking for downloaded ghost for account %s`
+- `Checking if login required %f %f`
+- `ClearLeaderboardInProgress`
+- `ClearTimeAttackLeaderBoardTable`
+- `Clearing racestats`
+- `CompetitorStats%sStats`
+- `Create Np Room with world ID %d`
+- `Create Room Successful, requesting room external data`
+- `CreateCustomGame`
+- `CreateRoom`
+- `Created And Joined Room`
+- `Created PlayerNetObject and SessonMasterNetObject`
+- `Created PlayerNetObject. I am not the SessionMaster`
+- `Creating And Joining Room`
+- `Current stats have been removed, the SVO action has timed out.`
+- `CustomGameCreated`
+- `CustomGameVehicleClassAvailable`
+- `CustomLobbyRaceEditBox`
+- `CustomLobbySelectables`
+- `CustomLobbyStartRaceEdit`
+- `CustomLobbyVisibles`
+- `Deleted SVO Accessor`
+- `Dev Player Ghost Time`
+- `Dev player name`
+- `DisplayMotorstormTutorial`
+- `DisplayTimeAttackGhosts`
+- `DownLoadGhost`
+- `DownloadGhostFromLeaderBoard`
+- `DownloadNPTicket`
+- `DownloadSelectedPlayerStats`
+- `Downloaded %s's stats`
+- `EMPTY: :( Not Setting the selected player.`
+- `EULA Not Available`
+- `EULA_ACCEPTED`
+- `EXIT_LEADERBOARD`
+- `Eliminator_countdown_player`
+- `Eliminator_unlock_ticket`
+- `Error Creating Join Room`
+- `Error Getting Room External info - invalid room Id`
+- `Error Getting Room External info, call failed 0x%x`
+- `Error Getting Room Internal info, call failed 0x%x`
+- `Error In Matching Room Event Callback Event %d`
+- `Error Joining Room`
+- `Error Leaving Room 0x%08x`
+- `Error Setting Room Data Internal, call failed 0x%x`
+- `Error in transfer, LS addr is not 16 aligned! (Please report to SCEE)(%d - %d %d)`
+- `Error in transfer, LS addr is not 16 aligned! (Please report to SCEE)(%d)`
+- `Error in transfer, MM addr is not 16 aligned! (Please report to SCEE)(%d - %d %d)`
+- `Error in transfer, MM addr is not 16 aligned! (Please report to SCEE)(%d)`
+- `Error in transfer, size to do is not 16 aligned! (Please report to SCEE) (%d)`
+- `Error in transfer, size to transfer is not 16 aligned! (Please report to SCEE) (%d)`
+- `Failed Ghosting`
+- `Failed to Join Least Populated Lobby in callback %d`
+- `Failed to write %u player histories starting at index %u. Got error code %i`
+- `FestivalPlayerRank`
+- `FestivalPlayerRankAnimated`
+- `FillRankedCachePage`
+- `FillRankedLeaderboardTable`
+- `FillTimeAttackLeaderboardTable`
+- `FindCustomGames`
+- `First Ticket. Set Start time to %d`
+- `Found Least Populated Lobby`
+- `GAME_MODE_INVALID`
+- `GAME_PLAYER_DOESNT_EXIST`
+- `GAME_PLAYER_INVALID`
+- `GAME_PLAYER_NOT_CREATED`
+- `GHOST DATA CORRUPT`
+- `GHOST.DAT`
+- `Game Type Set To GAMETYPE_CASUAL_ONLINE in CreateOnlineGameConfig`
+- `Game Type Set To GAMETYPE_RANKED_ONLINE in CreateOnlineGameConfig`
+- `Game stats Status %d`
+- `Game stats host name %s`
+- `Game stats version %d`
+- `GameModeTickets`
+- `GamePlayer`
+- `GamePlayerProfile`
+- `GameStats is %d bytes %d`
+- `GameTypeSetCasualOnline`
+- `GameTypeSetRankedOnline`
+- `GamersdayDemo1.ticket`
+- `GamersdayDemo2.ticket`
+- `Get NP Ticket Failed`
+- `Get NP Ticket succeeded`
+- `Get Np Room Member Data Internal Failed. Error code = 0x%08x`
+- `Get Room Data Internal`
+- `Get Room Member Data Internal`
+- `GetBootRegion`
+- `GetCurrentLeaderboardFilter`
+- `GetCustomGameAmbienceNum`
+- `GetCustomGameAmbienceNum2`
+- `GetCustomGameLapsOrElimTime`
+- `GetCustomGameTrackFilter`
+- `GetCustomGameTypeNum`
+- `GetCustomLapsOrElim2`
+- `GetEULAText`
+- `GetFriendlistLeaderboard`
+- `GetFriendsLeaderboard`
+- `GetGhostSelectComplete`
+- `GetGhostSelectShown`
+- `GetInvitationRoomExternalData`
+- `GetLeaderBoardTrackName`
+- `GetLeaderBoardVehcileClassName`
+- `GetLeaderBoardVehcileClassNameNonLocalised`
+- `GetLeaderboardFromTimeAttack`
+- `GetLocalPlayerName`
+- `GetLocalPlayerPositionTextID`
+- `GetMatchMakingCountDownTime`
+- `GetNumPlayersInRaceLobby`
+- `GetOnlinePlayerColour`
+- `GetOnlinePlayerRankProgressPercentage`
+- `GetOnlineStatsRankIcon`
+- `GetPlayerControlConfig`
+- `GetPlayerPositionLeaderboard`
+- `GetPlayerRank`
+- `GetPlayerVehicleClassChoice`
+- `GetRaceLobbyPlayerCount`
+- `GetRankIconOfLocalPlayer`
+- `GetRankIconOfLocalPlayerFromFlow`
+- `GetRankProgressOfLocalPlayer`
+- `GetRoomExternalData`
+- `GetRoomOwnerName`
+- `GetSelectedCustomGameTrack`
+- `GetSelectedGhostAvailability`
+- `GetSelectedPlayerCasualGamesString`
+- `GetSelectedPlayerCurrentWinningStreakString`
+- `GetSelectedPlayerCustomGamesString`
+- `GetSelectedPlayerFavouriteVehicleString`
+- `GetSelectedPlayerFestivalRank`
+- `GetSelectedPlayerLongestWinningStreakString`
+- `GetSelectedPlayerPlayersBeatenString`
+- `GetSelectedPlayerRankNumberString`
+- `GetSelectedPlayerRankType`
+- `GetSelectedPlayerRankedGamesString`
+- `GetSelectedPlayerTotalRacesString`
+- `GetSelectedTicket`
+- `GetStatsRank`
+- `GetStatsViewFilterTextId`
+- `GetStatsViewInt`
+- `GetTopLeaderboard`
+- `GetTrackStringFromTicket`
+- `Getting cached time attack leaderboard %d %d`
+- `Getting leaderboard %d %d %d`
+- `Getting ranked leaderboard`
+- `Getting time attack leaderboard %d %d`
+- `Ghost Buffer Size= %d`
+- `Ghost data posted`
+- `Ghost retrieved`
+- `Ghost: Buffer size %d, Current time %d, Split 1 time %d, Split 2 time %d, Split 3 time %d, Track=%s, Vehicle=%s`
+- `GhostColl %i `
+- `GhostIcon`
+- `GhostIconSilhouette`
+- `GhostSelectHighlightDown`
+- `GhostSelectHighlightLeft`
+- `GhostSelectHighlightRight`
+- `GhostSelectHighlightUp`
+- `GhostToggleTable`
+- `GhostVisual %i `
+- `Global Match Making Game setting region to -1`
+- `GoOnlineAndCreateRoom`
+- `GotMatchMakingTicket`
+- `HK_FILTER_CUSTOM`
+- `HOST_PLAYER_LIST_INVALID`
+- `HTTP/1.`
+- `HasRankForTicket`
+- `HasVoiceChatPermissionBeenChecked`
+- `Hello to you all. I'm playing MotorStorm too`
+- `HideCustomRaceLobbyTimer`
+- `HighlightPlayerInLeaderboard`
+- `Http::RTCommInit - ERROR - compiled rt_comm version[%s]`
+- `Http::RTCommInit - ERROR - linked rt_comm version[%s]`
+- `Http::RTCommInit - ERROR - the rt_comm library release doesn't match that used to compile the Http URIProvider code!`
+- `HttpHttpsURIProvider`
+- `HttpHttpsURIProviderFactory::CreateInstance - Build Identifier [%s]`
+- `IamRoomOwner`
+- `In Retrieve leaderboard player stats`
+- `In Retrieve leaderboard stats`
+- `In Update leaderboard`
+- `In login callback...`
+- `InNoLobby`
+- `In_Players_Sight`
+- `Incrementing PlayerStats dropout count on reconnection`
+- `InitPlayerRankProgress`
+- `InitTimeAttackGhostTable`
+- `Initialising Players Rank Progress Bar %f, %d`
+- `IsCustomGame`
+- `IsCustomRaceTypeEliminator`
+- `IsCustomRaceTypeEliminator2`
+- `IsCustomRaceTypeStandard`
+- `IsCustomRaceTypeStandard2`
+- `IsCustomVehicleClassAdded`
+- `IsGhostDownloading`
+- `IsLeaderboardFinished`
+- `IsLeaderboardInProgress`
+- `IsMatchMakingPrefGlobal`
+- `IsOnlyPlayerInTheRoom`
+- `IsRoomIdle`
+- `IsRoomInCasualEliminatorGame`
+- `IsRoomInCasualStandardGame`
+- `IsRoomInCustomGame`
+- `IsRoomInNoMatch`
+- `IsRoomInRankSummary`
+- `IsRoomInRankedEliminatorGame`
+- `IsRoomInRankedStandardGame`
+- `IsTimeAttackLeaderboard`
+- `IsVoiceChatPermitted`
+- `Ive Been kicked, cancelling all statemachines and leaving game and room`
+- `Join Room From Invitation`
+- `Join Room Successful`
+- `Join Room aborted`
+- `Join Room normal`
+- `JoinCustomGame`
+- `JoinRoom`
+- `Joined Room`
+- `Joining Room`
+- `JustRacedMotorstorm`
+- `KickRoomMember`
+- `KickRoomMemberFromNpRoom`
+- `Language localisation completed: %s in region #%d`
+- `LeaderboardAddSelectedFriend`
+- `LeaderboardCheckAge`
+- `LeaderboardCheckNetwork`
+- `LeaderboardCheckPSNAccount`
+- `LeaderboardConnect`
+- `LeaderboardExit`
+- `LeaderboardIsRanked`
+- `LeaderboardIsTimeAttack`
+- `LeaderboardPage {%i-%i of %i}`
+- `LeaderboardSendMessageToRoomMember`
+- `LeaderboardViewLeaderboard`
+- `Leave Custom Game and follow the leader`
+- `Leave Room Successful`
+- `Leave Room number = %d`
+- `LeaveAndCreateRoom`
+- `LeaveCustomGame`
+- `LeaveCustomGameWithParty`
+- `LeaveNpRoom`
+- `Left Np Room Successfully`
+- `Loaded stat data from profile with %d stats`
+- `Loading all data from profile, race stats list size: %d `
+- `Loading the ghost data`
+- `Lobby_ticket_`
+- `Local player removed`
+- `LocalPlayerIdle`
+- `LocalPlayerRaceFinished`
+- `LocalPlayerRacing`
+- `Logging into Medius Server with NP Ticket`
+- `Login failed as there is an age restriction in place`
+- `MAX_STATE_HTTP`
+- `MOTORSTORM2`
+- `MOTORSTORM_CHARACTER`
+- `MOTORSTORM_ENVIRONMENT`
+- `MOTORSTORM_GROUND_RUSH`
+- `MOTORSTORM_PARTICLEEFFECT`
+- `MOTORSTORM_SCENEOBJECT`
+- `MOTORSTORM_SOLIDS`
+- `MOTORSTORM_VEHICLE`
+- `MOTORSTORM_WORLD`
+- `MatchMakingInProgress`
+- `Max Players`
+- `MediusAccountUpdateStats`
+- `MediusAccountUpdateStats failed`
+- `MediusGetPlayerInfo`
+- `MediusGetPlayerInfo failed`
+- `MediusGetPlayerInfo(LoadPlayerStats) failed`
+- `MediusIncorrectLoginStep`
+- `MediusLogin`
+- `MediusLoginFailed`
+- `MediusNPlogin failed`
+- `MediusNumGameWorldsPerLobbyWorldExceeded`
+- `MediusPlayerBanned`
+- `MediusPlayerNotPrivileged`
+- `MotorStorm`
+- `MotorStorm2`
+- `MotorStorm2 PS3 SCEE 216240\0`
+- `MotorStorm_Event`
+- `Motorstorm`
+- `Motorstorm World`
+- `MotorstormAvailable`
+- `MotorstormCharacter`
+- `MotorstormEnvironment`
+- `MotorstormSceneObject`
+- `MotorstormSolids`
+- `MotorstormToUnlock`
+- `MotorstormVehicle`
+- `My Rank XP is %d, From Player Stats`
+- `N3evo10motorstorm10GroundRushE`
+- `N3evo10motorstorm11Environment17EnvMeshRenderableE`
+- `N3evo10motorstorm11EnvironmentE`
+- `N3evo10motorstorm11VehicleTypeE`
+- `N3evo10motorstorm13PlantResourceE`
+- `N3evo10motorstorm14GroundRushTypeE`
+- `N3evo10motorstorm14VehicleCrudderE`
+- `N3evo10motorstorm15EnvironmentTypeE`
+- `N3evo10motorstorm15RenderableProxyE`
+- `N3evo10motorstorm15SceneObjectTypeE`
+- `N3evo10motorstorm15VehicleResourceE`
+- `N3evo10motorstorm16SunMaterialSetupE`
+- `N3evo10motorstorm17ResolveRBCallbackE`
+- `N3evo10motorstorm17TransformCallbackE`
+- `N3evo10motorstorm19SceneObjectResourceE`
+- `N3evo10motorstorm20GroundRushRenderableE`
+- `N3evo10motorstorm20VehicleMudRenderableE`
+- `N3evo10motorstorm22LensFlareMaterialSetupE`
+- `N3evo10motorstorm25SceneObjectListRenderableE`
+- `N3evo10motorstorm29SceneObjectInstanceRenderableE`
+- `N3evo10motorstorm30SceneObjectListRenderableZPassE`
+- `N3evo10motorstorm31SceneObjectListRenderableShadowE`
+- `N3evo10motorstorm32SceneObjectListRenderableBlendedE`
+- `N3evo10motorstorm34SceneObjectListRenderableUnblendedE`
+- `N3evo10motorstorm38SceneObjectListRenderableBlendedSimpleE`
+- `N3evo10motorstorm40SceneObjectListRenderableUnblendedSimpleE`
+- `N3evo10motorstorm5WorldE`
+- `N3evo10motorstorm9PlantTypeE`
+- `N3evo10motorstorm9WorldTypeE`
+- `N3evo11posteffects19PostEffectsInstance10DebugScene23TexRegionClampTechSetupE`
+- `N3evo3rtt16PlayerAINodeRuleE`
+- `N3evo3rtt22PlayerSlowProgressRuleE`
+- `N3evo6online10SVOManagerE`
+- `N3evo6online14SVOActionLoginE`
+- `N3evo6online16SVOActionGetEulaE`
+- `N3evo6online16SVOActionMonitorE`
+- `N3evo6online17SVOActionGetGhostE`
+- `N3evo6online18SVOActionPostStatsE`
+- `N3evo6online19SVOActionInitialiseE`
+- `N3evo6online20LoginCallbackHandlerE`
+- `N3evo6online20SVOActionGetLocationE`
+- `N3evo6online23SVOActionGetLeaderboardE`
+- `N3evo6online23cNetPlayerUpdateMonitorE`
+- `N3evo6online24SVOActionGetAnnouncementE`
+- `N3evo6online4cSVOE`
+- `N3evo6online5LobbyE`
+- `N3evo6online7cNpRoomE`
+- `N3evo6online9SVOActionE`
+- `NO GHOST DATA`
+- `NP Login`
+- `New Member %s Entered the Room`
+- `New room owner is found , %s`
+- `NextStatsViewFilter`
+- `No Result from Join Least Populated Lobby, Try again?`
+- `No change to language and region`
+- `No current stats available`
+- `No downloaded ghost available`
+- `No ghost check, posting immediate`
+- `No pending stats, skipping score post.`
+- `No statemachine given ID CB_SetRoomInternalData`
+- `NoMatch Found Room gone to NoMatch`
+- `Not available, starting SVO...`
+- `Not enough room in game %s for %d more players`
+- `Not yet time to redownload %s's stats`
+- `Np Room Created`
+- `OcclusionStatsViewer`
+- `Online Player Ghost Time`
+- `Online player name`
+- `Online.casualgamesplayed`
+- `Online.customgamesplayed`
+- `Online.ranked.bronzes`
+- `Online.ranked.fullracecompleted`
+- `Online.ranked.gamesplayed`
+- `Online.ranked.golds`
+- `Online.ranked.longwinningstreak`
+- `Online.ranked.playersbeaten`
+- `Online.ranked.ranking`
+- `Online.ranked.silvers`
+- `Online.ranked.xp`
+- `OnlineResultsPlayerName`
+- `OnlineResultsPlayerTime`
+- `Only one instance of the SVOAccessor permitted`
+- `PLAYER`
+- `PLAYER QUITTED THIS RANKED GAME. Adding penalty points = %d, Quits = %d`
+- `PLAYERSLEFT`
+- `POST_STATS_ALREADY_EXIST`
+- `Player`
+- `Player %d: Account ID for Party = %d   Rank Level = %d`
+- `Player %s has left game %s at %s`
+- `Player %s has returned to the public lobby at %s`
+- `Player AINode`
+- `Player Ghost Time`
+- `Player Obj not valid`
+- `Player Quit Race, and is leaving`
+- `Player Slow Progress`
+- `Player position leaderboard`
+- `Player1`
+- `Player2`
+- `Player3`
+- `Player4`
+- `PlayerBoost`
+- `PlayerBoostPost`
+- `PlayerBus`
+- `PlayerClassChoiceConfirmed`
+- `PlayerGags`
+- `PlayerListTable`
+- `PlayerNetObject`
+- `PlayerPoints`
+- `PlayerPointsUpdating`
+- `PlayerPreEffect`
+- `PlayerRankProgress`
+- `PlayerSlot`
+- `PlayerStats is %d bytes`
+- `PlayerStats version is invalid. Assuming new account and resetting.`
+- `PlayerSurface`
+- `PlayerVehicle`
+- `Player_eliminated`
+- `Players In the Race is %d`
+- `PopulateCustomTickets`
+- `PopulateGUITicketIcons`
+- `PopulateGUITickets`
+- `PopulateStatsTable`
+- `Populated TheGame from ticket %s`
+- `Post stats complete`
+- `PostGhostData`
+- `PostRaceStatsUpdate performed`
+- `Posting SVO Scores`
+- `Posting ghost data : %s %s %s`
+- `PreRaceStatsUpdate performed`
+- `PrevStatsViewFilter`
+- `Process post race stats triggered`
+- `ProcessStatsAndUnLocks`
+- `ProcessTimeAttackScoresForNpLeaderboard`
+- `Push Myself onto the list of players`
+- `Querying ranked, local score is %d`
+- `QuitRaceStatsUpdate performed`
+- `RANKED Match Making game, Average Rank XP of %d. Total %d   players %d`
+- `REMOTE_PLAYER_LIST_INVALID`
+- `ROOM_IDLE`
+- `ROOM_IN_CASUAL_ELIMINATOR`
+- `ROOM_IN_CASUAL_STANDARD`
+- `ROOM_IN_CUSTOM_GAME`
+- `ROOM_IN_MATCHMAKE`
+- `ROOM_IN_MATCHMAKE_NOMATCH`
+- `ROOM_IN_RANKED_ELIMINATOR`
+- `ROOM_IN_RANKED_STANDARD`
+- `ROOM_IN_RANK_SUMMARY`
+- `Race Results, Player had a finish time %s`
+- `Race Stats Manager Completion callback at %d`
+- `RaceLobbyVehicleSelections`
+- `RaceLobbyVehicles`
+- `Ranked Game`
+- `Ranked Quit Count`
+- `Ranked Winning Streak`
+- `Ranked quit count decremented to %i`
+- `Ranked up baby! Immune for 3 races`
+- `Ready to post %d stats`
+- `RegisterGhostDownload`
+- `Registered PlayerNetObject`
+- `Remote player %s is using vehicle %s`
+- `RemoveCustomVehicleClass`
+- `Removing %d stats from profile`
+- `Removing Room Member : %s`
+- `Request NP Ticket Failed 0x%08x`
+- `Request NP Ticket succeeded`
+- `ResetLastRacePlayedWasMatchMaking`
+- `ResetLeaderBoard`
+- `ResetStatsView`
+- `ResetStatsViewFilter`
+- `ResultsPlayerEliminated`
+- `ResultsPlayerName`
+- `ResultsPlayerTime`
+- `ResultsSetPlayerBitmaps`
+- `RetrieveGhost`
+- `RetrieveGhostData`
+- `RetrieveLeaderBoardPlayerStats`
+- `RetrieveLeaderBoardStats`
+- `Retrieved PlayerStats`
+- `ReturnToPlayerList`
+- `ReturnToSplitScreenPlayerSelect`
+- `Room Already idle, or i am not the room owner`
+- `Room Blob`
+- `Room Message Send from member %s`
+- `Room Status     = %d : %s`
+- `Room is in Custom Race Lobby and the Local player is Leaving`
+- `Room is in Eliminator Ranked Game`
+- `Room is in MATCHING MAKING Race Lobby and the Local player is Leaving. Return 1 to go back to wreckreaction online`
+- `Room is in Standard Ranked Game`
+- `Room is joinable, YAY, GO ROOM`
+- `Room is joinable, YAY, GO ROOM, Friends Only`
+- `Room is not joinable - status %d`
+- `RoomJoined`
+- `RoomMatchMakingPreferenceGlobal`
+- `RoomPlayerListSelectable`
+- `SCERT Group1`
+- `SCERT Group1#0!`
+- `SCERT Root Authority0`
+- `SCERT_GAME_ID_INVALID`
+- `SCE_NP_BASIC_EVENT_ADD_PLAYERS_HISTORY_RESULT`
+- `SCE_NP_BASIC_EVENT_INCOMING_CUSTOM_DATA_MESSAGE`
+- `SCE_NP_BASIC_EVENT_INCOMING_CUSTOM_INVITATION`
+- `SCE_NP_BASIC_EVENT_RECV_CUSTOM_DATA_RESULT`
+- `SCE_NP_BASIC_EVENT_SEND_CUSTOM_DATA_RESULT`
+- `SCE_NP_MATCHING2_ROOM_MSG_EVENT_ChatMessage`
+- `SCE_NP_MATCHING2_ROOM_MSG_EVENT_Message`
+- `SHOW_EULA`
+- `SINGLE_TICKET`
+- `SP_Login`
+- `SP_UpdateTicket`
+- `SSLSocket::ctor - ERROR - the rt_ssl library release doesn't match that used to compile the Http URIProvider code!`
+- `STATE_HTTP_CONNECT_WAIT_ON_ENTER`
+- `STATE_HTTP_CONNECT_WAIT_ON_UPDATE`
+- `STATE_HTTP_GET_HOST_BY_NAME_ON_ENTER`
+- `STATE_HTTP_GET_HOST_BY_NAME_ON_RETRY`
+- `STATE_HTTP_GET_HOST_BY_NAME_ON_UPDATE`
+- `STATE_HTTP_IDLE_ON_ENTER`
+- `STATE_HTTP_IDLE_ON_UPDATE`
+- `STATE_HTTP_NOTSET`
+- `STATE_HTTP_RECV_ON_ENTER`
+- `STATE_HTTP_RECV_ON_UPDATE`
+- `STATE_HTTP_SEND_ON_ENTER`
+- `STATE_HTTP_SEND_ON_UPDATE`
+- `SVBrowser::TicketLogin 'TicketLoginURI' is not secure!`
+- `SVBrowser::TicketLogin could not find URI 'ticketLogin'`
+- `SVO Already available in Start...`
+- `SVO Assertion: %s`
+- `SVO Debug: `
+- `SVO Login failed`
+- `SVO Manager Submit callback`
+- `SVO Online download leaderboard callback`
+- `SVO Override URL is %s`
+- `SVO SSL is disabled.`
+- `SVO SSL is enabled.`
+- `SVO URL is %s`
+- `SVO Unavailable`
+- `SVO Unavailable...`
+- `SVO debug is disabled.`
+- `SVO debug is enabled.`
+- `SVO is disabled.`
+- `SVO is enabled.`
+- `SVO login failed`
+- `SVO login succeeded`
+- `SVO-Platform: PS3`
+- `SVO-ScreenHeight: %.2f`
+- `SVO-ScreenWidth: %.2f`
+- `SVOAccessor::Startup`
+- `SVOGameID`
+- `SVO_CONNECT`
+- `SV_HTTPURIPROVIDER_BUILDIDENTIFIER`
+- `SaveMatchMakingPref`
+- `Saving %d stats to profile`
+- `Saving SVO Stats to profile state machine`
+- `Saving the online ghost data`
+- `SceNpMatching2CreateJoinRoomResponse Failed to get event data`
+- `ScreenGrabManager_GetImagePlayerName`
+- `SelectFromPlayerList`
+- `SelectLeaderboardRow`
+- `SelectNextCustomGameAmbience`
+- `SelectNextCustomGameAmbience2`
+- `SelectNextCustomGameTrack`
+- `SelectNextCustomGameTrackWithAny`
+- `SelectNextCustomGameType`
+- `SelectNextCustomGameType2`
+- `SelectNextCustomGameTypeWithAny`
+- `SelectNextLeaderBoardTrack`
+- `SelectNextLeaderBoardVehcileClass`
+- `SelectNextLeaderboardFilter`
+- `SelectPlayerDetailsFromLeaderboard`
+- `SelectPlayerDetailsFromRankedLeaderboard`
+- `SelectPrevCustomGameAmbience`
+- `SelectPrevCustomGameAmbience2`
+- `SelectPrevCustomGameTrack`
+- `SelectPrevCustomGameTrackWithAny`
+- `SelectPrevCustomGameType`
+- `SelectPrevCustomGameType2`
+- `SelectPrevCustomGameTypeWithAny`
+- `SelectPrevLeaderBoardTrack`
+- `SelectPrevLeaderBoardVehcileClass`
+- `SelectPrevLeaderboardFilter`
+- `SelectTimeAttackGhost`
+- `SelectedPlayer is me so skipping DownloadSelectedPlayerStats`
+- `Selecting player from DME LIST : %s`
+- `Selecting player from Room Members LIST : %s`
+- `SendMatchingRoomInvites`
+- `SendMessageToRoomMember`
+- `Set Np Room Member Data Internal Failed. Error code = 0x%08x`
+- `Set Room Member Data Internal`
+- `SetBoardTypeToRanked`
+- `SetCasualOption`
+- `SetCustomRaceLobbyTimeout`
+- `SetEULAAccepted`
+- `SetGhostSelectComplete`
+- `SetGhostSelectShown`
+- `SetJustRacedMotorstorm`
+- `SetLeaderboard`
+- `SetLeaderboardAgeVerificationOK`
+- `SetLeaderboardBegin`
+- `SetLeaderboardConnected`
+- `SetLeaderboardEULAAccepted`
+- `SetLeaderboardEULARejected`
+- `SetLeaderboardFinished`
+- `SetLeaderboardFromTimeAttack`
+- `SetLeaderboardNetworkOK`
+- `SetLocalPlayerNameFromOnline`
+- `SetMatchMakingPreferenceFromProfile`
+- `SetOnlineLobby`
+- `SetPlayerLeaving`
+- `SetPlayerStatusAlarm`
+- `SetPlayerTimeAttackBestClassImage`
+- `SetPlayerTimeAttackCurrentVehicleImages`
+- `SetPlayerVehicleClassChoice`
+- `SetRankedOption`
+- `SetReturnToPlayerList`
+- `SetRoomIdle`
+- `SetSelectedPlayerFromLeaderboard`
+- `SetSelectedTicket`
+- `SetTTScoresEULAAccepted`
+- `SetTTScoresEULARejected`
+- `SetTableSelectedPlayerRowNumber`
+- `SetTableSelectedRegion`
+- `Setting NP room TaskResult to %d`
+- `Setting client Index %d as the player to kick`
+- `Setting ghost delegate in wrong place.`
+- `Setting name of local player to %s`
+- `Setting override SVO URL %s`
+- `Setting room to Idle`
+- `Setting room to Idle- I am the Room Owner`
+- `Setting room to Match Making Error`
+- `Setting room to Start Match Making`
+- `Setting stats delegate in wrong place.`
+- `SetupRankedLeaderboard`
+- `SetupTimeAttackLeaderboard`
+- `Skipping ghost data post`
+- `Skipping stats profile save - current not available`
+- `Speed_unlock_ticket`
+- `SplitScreenGetNumPlayers`
+- `SplitScreenPlayerNumber`
+- `SplitScreenSetNumPlayers`
+- `StartGUIViewLeaderboard`
+- `StartMatchMaking`
+- `StartSVO`
+- `StartSVO Called`
+- `Starting SVO Accessor`
+- `Statistics are disabled, please enable them in hkbase/config/hkConfigMemoryStats.h`
+- `Stats for account %d no longer needed`
+- `StopSVO`
+- `StopSVO Called`
+- `Submitting pending race stats for game mode %d.`
+- `Successfully Kicked Room Member`
+- `Successfully set Room Internal data`
+- `TRACK = %s , TTIndex = %d , CustomIndex = %d `
+- `Target ghosting`
+- `Target_Ghosting`
+- `There are no online tickets to choose from`
+- `There is no EULA`
+- `There's no selected player`
+- `This player is meee....continue`
+- `Ticket`
+- `Ticket Env Name is %s`
+- `Ticket Laps is %d`
+- `Ticket Name is %s`
+- `Ticket Race Type is %d`
+- `Ticket Track Name is %s`
+- `Ticket Vetoed, Adding %d seconds`
+- `TicketBestAggression`
+- `TicketBestMedal`
+- `TicketBestSkill`
+- `TicketBestSpeed`
+- `TicketClassAvailable`
+- `TicketClassSelectable`
+- `TicketEliminatorLimit`
+- `TicketEliminatorLimitAchieved`
+- `TicketFestivalRank`
+- `TicketImageName`
+- `TicketIsAggressionEvent`
+- `TicketIsElminatorEvent`
+- `TicketIsMotorstormEvent`
+- `TicketIsSkillEvent`
+- `TicketIsSpeedEvent`
+- `TicketIsSpeedRace`
+- `TicketIsStandardEvent`
+- `TicketIsUnlocked`
+- `TicketLoginURI`
+- `TicketNumberofLaps`
+- `TicketSelectable`
+- `TicketSpeedTarget`
+- `TicketSpeedTargetAchieved`
+- `TicketTitle`
+- `TicketTrackName`
+- `TicketUnlocksEliminator`
+- `TicketUnlocksSpeed`
+- `Ticket_Settings`
+- `Ticket_Source`
+- `Ticket_Type`
+- `TimeAttackLeaderboard`
+- `TimeToStartCustomRace`
+- `ToggleMatchMakingPref`
+- `ToggleTimeAttackGhost`
+- `Too Many players to do match making`
+- `TotalMotorstormEvents`
+- `Trying to promote a player to room leader but there's no selected player`
+- `Unable to Send Friend Request to room member`
+- `Universe has no SVO URL`
+- `Unknown Room Event`
+- `Unknown internal room member attribute %d`
+- `Unknown region number: %d`
+- `UnracedAvailableTicketsInZone`
+- `Update Room Info - Room Owner Changed`
+- `UpdateCustomGameFromRaceLobby`
+- `UpdateCustomGamesListTable`
+- `UpdateLeaderboardBySelection`
+- `UpdateOnlineLobby`
+- `UpdatePlayerListTable`
+- `UpdatePlayerPoints`
+- `UpdatePlayerProfileUsingOnlineStats`
+- `UpdatePlayerRankProgress`
+- `UpdateProfileStatsWithOnline`
+- `UpdateResultsOf-DISCONNECTEDPlayer of Remote Player %s`
+- `Updated Room Info. Room Status is now Start Match Making`
+- `Updatin Room Internal Data`
+- `Updating Resutls of Local Player`
+- `Updating Resutls of Remote Player %s`
+- `Updating Room Internal Data - *ROOM IDLE* (Last Task Result = %d)`
+- `Updating Room Member Internal Data: %s`
+- `Upgraded PlayerStats to version %d`
+- `UploadPlayerStats failed`
+- `User Accepted Invitation to the room they are already in, so we are setting invitation id to 0 and not going any further`
+- `Using SVO URL from universe %s`
+- `VIEW_LEADERBOARD`
+- `VehicleGhost`
+- `X-SVOMac:`
+- `X-SVOMac: %s`
+- `X-SVONonce: `
+- `X-SVOTargetID: %s`
+- `X-SVOTargetType: %d`
+- `X-SVOTitleID: %d`
+- `accountID`
+- `accountId`
+- `cOnlineOnline::addPlayers: Client index %d refers to a nonexistant player`
+- `cSVO::GetAnnouncementText: Address = 0x%08x -- Size = %d`
+- `cSVO::SetAnnouncementText: AnnouncementText Address = 0x%08x -- Size = %d`
+- `cSVO::SetAnnouncementText: Cut Buffer Down to = 0x%08x -- Size = %d`
+- `cSVO::SetAnnouncementText: New Announcement Text fits = 0x%08x -- Size = %d`
+- `cSVO::SetEULAText: Cut Buffer Down to = 0x%08x -- Size = %d`
+- `cSVO::SetEULAText: EulaText Address = 0x%08x -- Size = %d`
+- `cSVO::SetEULAText: New Eula Text fits = 0x%08x -- Size = %d`
+- `casual games played`
+- `createGamePlayerURI`
+- `createGamePlayerURL`
+- `currentPlayer`
+- `custom games played`
+- `customAttributes`
+- `data ID is equal to SCE_NP_MATCHING2_ROOM_BIN_ATTR_INTERNAL_1_ID`
+- `data/databases/Stats.xml`
+- `data/events/tickets/`
+- `defaultplayer`
+- `f_casual_rig`
+- `f_casual_rig_LV01`
+- `f_casual_rig_LV03`
+- `f_casual_rig_lv03`
+- `failed to create PlayerNetObject`
+- `festival.player.points`
+- `gameBinaryStatsPostURI`
+- `gamePostBinaryStatsURI`
+- `gamersdaydemo1b.ticket`
+- `gamersdaydemo1c.ticket`
+- `getEula`
+- `getRegion`
+- `ghostAvailable`
+- `ghostLength`
+- `ghostNoiseVolume`
+- `ghost_icon.dds`
+- `ghost_icon_dev.dds`
+- `ghost_icon_downloaded.dds`
+- `ghost_icon_silhouette.dds`
+- `global.4playerCompleted`
+- `global.devghostsbeaten`
+- `gui/textureresources/guitickets.rpk`
+- `gui/textureresources/guitickets.rpk#`
+- `hkCustomAttributes`
+- `hkCustomAttributesAttribute`
+- `hkbCustomTestGenerator`
+- `hkbCustomTestGeneratorStruck`
+- `http://`
+- `http://192.0.2.12/media/`
+- `http://www.w3.org/2001/XMLSchema-instance`
+- `https:`
+- `join room Failed to get event data`
+- `joining room with rank of %d`
+- `keys/tickets/`
+- `leaderboard`
+- `leaderboard/ranked`
+- `leaderboard/timeattack`
+- `location.region`
+- `loginEncryptedURI`
+- `loginEncryptedURL`
+- `motorstorm2ps3.online.scee.com`
+- `online.casualgamesplayed`
+- `online.customgamesplayed`
+- `online.ranked.bronzes`
+- `online.ranked.gamesplayed`
+- `online.ranked.golds`
+- `online.ranked.longwinningstreak`
+- `online.ranked.playersbeaten`
+- `online.ranked.silvers`
+- `online.wreckFreeRankedRaces`
+- `online_ranked`
+- `onlinelobby`
+- `options.playernameflag`
+- `options.playernamestring`
+- `player`
+- `player quit race in custom game, Status is Idle and Quit`
+- `player%d`
+- `playerReset`
+- `playerResetDelay`
+- `playerSide`
+- `playerbestvehicle`
+- `playersBeaten`
+- `playersBeatenBy`
+- `poststats`
+- `ranked bronze`
+- `ranked games played`
+- `ranked gold`
+- `ranked players beaten`
+- `ranked silver`
+- `ranked winning streak`
+- `region`
+- `regionClamp`
+- `sceNpManagerGetAccountRegion failed. Error code: 0x%08x`
+- `sceNpManagerRequestTicket2 failed. Error code = 0x%08x`
+- `sceNpMatching2CreateJoinRoom Failed. Error code = 0x%08x`
+- `sceNpMatching2GetRoomDataExternalList Failed. Error code = 0x%08x`
+- `sceNpMatching2JoinRoom Failed. Error code = 0x%08x`
+- `sceNpMatching2LeaveRoom Failed. Error code = 0x%08x`
+- `sceNpMatching2RegisterRoomEventCallback failed. Error code : 0x%08x`
+- `sceNpMatching2RegisterRoomMessageCallback failed. Error code : 0x%08x`
+- `set room external data`
+- `setting location id to player profile  : %d`
+- `showMemStats`
+- `small_ticket_locked.dds`
+- `small_ticket_raced.dds`
+- `small_ticket_unlocked.dds`
+- `source/online/svo/ms2actions.cpp`
+- `spUpdateTicketURI`
+- `start ticket %s`
+- `stat.playersBeaten`
+- `svo.stats.`
+- `svo.stats.%d-%d-%d-`
+- `svo.stats.%d-%d-%d-%s`
+- `svoDebug`
+- `svoSSL`
+- `svoUrl`
+- `svoclient-nightly-3.03.200806061111`
+- `taLeaderboardProgress is now %d %s`
+- `ticket.`
+- `ticketLogin`
+- `ticket_`
+- `tickets01.dds`
+- `tutorial.motorstorm%d`
+- `useSVO`
+- `userStats`
+- `wreckreation-leaderboards-ranked.gui`
+- `wreckreation-leaderboards-timeattack.gui`
+- `xp of Player is set in NetObj = %d, level %d`
+- `|PLAYER`
+
+## Protocol-relevant UTF-16 strings

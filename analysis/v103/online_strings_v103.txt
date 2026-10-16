@@ -1,0 +1,625 @@
+		 Account ID %d  	 XP %d
+		--------------Ranked Game Stats Post Race------------
+		------------Start Match Party Request----------------
+	--------------Ranked Game Stats Pre Race------------
+	=============== PostRaceRankingUpdate ======================
+	Medius World ID = %d
+	Rank Level				= %d 
+	Ranked Quit Count		= %d
+	Ranked Quit Count		= %d 
+	Ranked Quit Count	    = %d 
+	Ranked Winning Streak	= %d 
+ MediusWorld ID   %d  
+## SM_Dropout callback is now CB_DropoutLeaderboards ##
+%s's PlayerStats haven't been uploaded because the server connection has been lost
+%s's PlayerStats haven't been uploaded because they haven't changed
+%s: Allocating a score rank data array
+%s: Best Score: %d, New Score: %d
+%s: Best score map created successfully
+%s: Best score: %d
+%s: Found the score in the map, [%d] %d
+%s: Leaderboard Filter %d
+%s: Posted to Ranking Scoreboards.
+%s: Score is better, posted to Ranking Scoreboards.
+%s: Score is not better, so not posting to Ranking Scoreboards.
+%s: Setting Ranked score
+%s: Setting Time Attack score
+%s: There is no leaderboard filter set.
+%s: sceNpMatching2Init2() failed. Error code: 0x%08x
+(}jbx}*XPU(
+* Party size		= %d
+* Rank Level  		= %d
+* Ranked Game 		= %d
+** Attempting Connect to Medius server %s **
+** Cancelling Match Making **
+** Populating Game from Ticket **
+** Updating Online Profile with offline stats etc **
+**** AUTO restarting Matching Making  ****
+****************Matching Room Message Callback ** event %d, errorCode %d, roomId %d
+**************Matching Room Event Callback ** 
+********Matching Context callback***************
+*.ticket
+--------------End of Stats Pre Race------------
+--------------Ranked Game Quit Race Stats------------
+../../source/TicketUpdateModule.cpp
+.aggressionRank
+.skillPoints
+.skillRank
+.speedRank
+17FinishScoreFormat
+18TicketUpdateModule
+20OcclusionStatsViewer
+AcceptMatchingInvites
+Account Stats uploaded failed
+Account Stats uploaded to server
+AddAllCustomTicketVehicles
+Aggression_Ranking
+ApplyConfigFromTicket
+Begun Medius session with key %s
+BuildStatsTable
+CB_MatchParty **No Result** from Party Join, Try again?
+CB_MatchParty Failed to Match Party in callback Status code %d
+CB_MatchParty**MediusMatchTypeReferral**
+CB_MediusUpdateError(): LastNetError has changed from #%d to #%d
+CallPostNpScoreCB
+Calling get top leaderboard in onlineonline
+CancelMatchMaking
+CancelMatchMakingAndLeaveGroup
+Cannot find ticket with name %s
+CheckScoreboardCache
+ClearLeaderboardsInProgress
+ClearSpeedWeekendLeaderboard
+ClearTTScoresInProgress
+Clearing racestats
+CompetitorStats%sStats
+CreateBestScoreMap
+Created new game '%s' with MediusWorldID %d
+Current stats have been removed, the SVO action has timed out.
+Destroying Np Score
+Disconnected from Medius %s server
+DisplayRankTutorial
+DownloadNPTicket()
+DownloadSelectedPlayerStats
+Downloaded %s's stats
+Downloading stats for account #%d (%s)
+Eliminator_unlock_ticket
+Error Calling MediusJoinLeastPopulatedChannel
+Error Finding Match Make, SuperSetNot avaliable
+Error Finding Match Make, user does not have account ID**
+Error In Matching Room Event Callback Event %d
+Error In call to Finding Matching Game From MMS %d
+Error MediusFindWorldByName
+Error Starting Np Matching 2 Start Context Async
+Failed VehMatch
+Failed VehMatchJustRTT
+Failed VehMatchLocked
+Failed VehMatchNoGagVol
+Festival Rank
+FestivalPlayerRank
+FestivalPlayerRankAnimated
+Festival_Rank_Level
+FillMiniSpeedWeekendLeaderboardTable
+FillRankedCachePage
+FillRankedLeaderboardTable
+FillSpeedWeekendLeaderboardTable
+FillTimeAttackLeaderboardTable
+Find Match Aborted
+FindMatch
+Found game '%s' with MediusWorldID %d
+Game stats Status is %d
+Game stats host name is %s
+Game stats version is %d
+GameModeSkill
+GameModeTickets
+GameStats is %d bytes
+GameTypeSetCasualOnline
+GameTypeSetRankedOnline
+GamersdayDemo1.ticket
+GamersdayDemo2.ticket
+Get NP Ticket Failed
+Get NP Ticket succeeded
+Get Superset Error
+GetBestScore
+GetCurrentLeaderboardFilter
+GetFriendlistLeaderboard
+GetFriendsLeaderboard
+GetLeaderboardFromTimeAttack
+GetMatchMakingCountDownTime
+GetMatchMakingTimer
+GetOnlinePlayerRankProgressPercentage
+GetOnlineStatsRankIcon
+GetPartyRankIconString
+GetPartyRankStringID
+GetPlayerPositionLeaderboard
+GetPlayerRank
+GetRankIcon
+GetRankIconOfLocalPlayerFromFlow
+GetRankProgress
+GetRankProgressPercentage
+GetRankTypeFromFlow
+GetRankingByNpId
+GetRankingByNpId complete
+GetRankingByRange
+GetRankingByRange complete
+GetRoomAverageXP had no room members inside
+GetSelectedPlayerFestivalRank
+GetSelectedPlayerRankType
+GetSelectedTicket
+GetStatsRank
+GetStatsViewFilterTextId
+GetStatsViewInt
+GetTopLeaderboard
+GetTrackStringFromTicket
+Getting cached speed weekend leaderboard %d %d
+Getting cached time attack leaderboard %d %d
+Getting leaderboard %d %d %d
+Getting ranked leaderboard
+Getting speed weekend leaderboard %d %d
+Getting time attack leaderboard %d %d
+Got Referral to MMS Server
+Got SuperSetList
+GotMatchMakingTicket
+HasRankForTicket
+HighlightPlayerInLeaderboard
+I tried to send an End Game Report at %s but didn't succeed (MediusErrorCode = %d)
+Ignoring ConnectStatusNeedDisconnect in CB_DisconnectFromMediusServer
+In Retrieve leaderboard player stats
+In Retrieve leaderboard stats
+Incrementing PlayerStats dropout count on reconnection
+InitNpScoreboards
+Initialising Players Rank Progress Bar %f, %d
+IsMatchMakingPrefGlobal
+IsNewScoreBetter
+IsRoomInNoMatch
+LeaderboardAddSelectedFriend
+LeaderboardConnect
+LeaderboardExit
+LeaderboardExitSW
+LeaderboardPage {%i-%i of %i}
+LeaderboardSendMessageToRoomMember
+LeaderboardTypeInProgress
+LeaveCustomGameWithParty
+Loaded stat data from profile with %d stats
+Loading Ranking Data
+Loading all data from profile, race stats list size: %d 
+Lobby_ticket_
+LocalPlayerHasHighestRankLevel
+Logging into Medius Server with NP Ticket
+Match Party Callback
+Match Party Successful, JoinGameSpecified
+MatchMadeGameTypeString
+MatchMadeGameTypeString2
+MatchMaking can start. There are %d players
+MatchMakingInProgress
+MatchSuperset Not Found, No Result
+Medius Client Library %s
+Medius Client Library Version
+Medius Find Game Error
+Medius Find Game Error - No Result
+Medius Universe is %s
+Medius game doesnt have enough free slots
+Medius session ended
+MediusAccessLevelInsufficient
+MediusAccountAlreadyExists
+MediusAccountBanned
+MediusAccountLoggedIn
+MediusAccountNotFound
+MediusAccountNotUCCompliant
+MediusAccountUpdateStats
+MediusAccountUpdateStats() failed
+MediusAlreadyLeaderOfClan
+MediusBeginSessionFailed
+MediusBillingVerificationRequired
+MediusCacheFailure
+MediusChannelNameExists
+MediusChannelNotFound
+MediusClanNameInUse
+MediusClanNotFound
+MediusClearGameListFilter
+MediusClearGameListFilter() failed
+MediusClearGameListFilterFailed
+MediusConnect(%s) failed
+MediusConnect(%s) failed in callback. ConnectStatus = %d and FailureReason = %d
+MediusConnect(%s) failed: already connected
+MediusCreateGame
+MediusCreateGame() failed
+MediusCreateGame(): Game '%s' already exists
+MediusCreateGame(): Game '%s' has failed the vulgarity filter
+MediusDBError
+MediusDMEError
+MediusDNASSignatureLoggedIn
+MediusDataAlreadyExists
+MediusDataDoesNotExist
+MediusDnasSignature failed
+MediusEndSessionFailed
+MediusExceedsMaxWorlds
+MediusFail
+MediusFeatureNotEnabled
+MediusFileAlreadyExists
+MediusFileDoesNotExist
+MediusFileInternalAccessError
+MediusFileInvalidFilename
+MediusFileNoPermissions
+MediusFileQuotaExceeded
+MediusFilterFailed
+MediusFilterNotFound
+MediusGameListSortOperationFailed
+MediusGameNameExists
+MediusGameNameNotFound
+MediusGameNotFound
+MediusGatewayError
+MediusGetGameInfo
+MediusGetGameInfo() failed
+MediusGetGameListFilterFailed
+MediusGetGames
+MediusGetGames_ExtraInfo() failed
+MediusGetLocations
+MediusGetLocations() failed
+MediusGetPlayerInfo
+MediusGetPlayerInfo() failed
+MediusGetPlayerInfo(LoadPlayerStats) failed
+MediusGetPolicy() failed
+MediusGetUniverseInformation
+MediusGetUniverseInformation() failed
+MediusInQueue
+MediusIncompatibleAppID
+MediusIncorrectLoginStep
+MediusInitialize() failed. MediusError = 0x%08x
+MediusInvalidPassword
+MediusInvalidRequestMsg
+MediusJoinGame
+MediusJoinGame FULL
+MediusJoinGame() failed
+MediusJoinGame: Game does not exist
+MediusKeyError
+MediusLeaderCannotLeaveClan
+MediusLogin
+MediusLoginFailed
+MediusMachineBanned
+MediusMatchGameCreationFailed
+MediusMatchServerNotFound
+MediusMatchTypeHostGame
+MediusMatchTypeJoinSpecified
+MediusMatchTypeNoMatch_DEPRECATED
+MediusMatchTypeReferral
+MediusMaxExceeded
+MediusNPlogin() failed
+MediusNoResult
+MediusNotAMember
+MediusNotClanLeader
+MediusNotClanMember
+MediusNpIdPost Failed. MediusError = %d
+MediusNumFiltersAtMax
+MediusNumGameWorldsPerLobbyWorldExceeded
+MediusNumSortCriteriaAtMax
+MediusPass
+MediusPasswordNotUCCompliant
+MediusPlayerBanned
+MediusPlayerNotPrivileged
+MediusRegistrationFailed
+MediusRequestAccepted
+MediusRequestDenied
+MediusServerBusy
+MediusSessionBegin
+MediusSessionBegin() failed
+MediusSessionEnd
+MediusSessionEnd() failed
+MediusSessionFail
+MediusSessionKeyInvalid
+MediusSetBuddyList
+MediusSetBuddyList Failed, Bigger than Max
+MediusSetGameListFilter
+MediusSetGameListFilter() failed
+MediusSetGameListFilterFailed
+MediusSetLocalizationParams
+MediusSetLocalizationParams() failed
+MediusSortCriteriaNotFound
+MediusStepSendFailed
+MediusSubscriptionAborted
+MediusSubscriptionInvalid
+MediusSuccess
+MediusTextStringInvalid
+MediusTokenAlreadyTaken
+MediusTokenDoesNotExist
+MediusTransactionCanceled
+MediusTransactionTimedOut
+MediusUpdate() has returned %d
+MediusUpdateClientState(JoinedChatWorld) failed at %s (MediusErrorCode = %d)
+MediusUpdateClientState(LeftGameWorld) failed at %s (MediusErrorCode = %d)
+MediusWMError
+MediusWorldClosed
+MediusWorldCreatedSizeReduced
+MediusWorldIsFull
+N3evo6online10MediusDataE
+N3evo6online11EvoScoreTagE
+N3evo6online12SuperSetInfoE
+N3evo6online18SVOActionPostStatsE
+N3evo6online23SVOActionGetLeaderboardE
+N3evo6online7cMediusE
+N3evo6online8cNpScoreE
+NP Matching2 context ID is %d
+New Rank Badge %d
+NextStatsViewFilter
+No DNS look up required. Medius server IP address is %s
+No current stats available
+No pending stats, skipping score post.
+No scores to post after Time Attack race
+NoMatch Found Room gone to NoMatch
+NoScores
+Not yet time to redownload %s's stats
+Np Matching 2 started Successfully
+OcclusionStatsViewer
+Online.casualgamesplayed
+Online.ranked.bronzes
+Online.ranked.fullracecompleted
+Online.ranked.gamesplayed
+Online.ranked.golds
+Online.ranked.longwinningstreak
+Online.ranked.playersbeaten
+Online.ranked.ranking
+Online.ranked.silvers
+Online.ranked.xp
+Player %d: Account ID for Party = %d   Rank Level = %d
+Player position leaderboard
+PlayerStats is %d bytes
+PlayerStats version is invalid. Assuming new account and resetting.
+PopulateCustomTickets
+PopulateGUITicketIcons
+PopulateGUITickets
+PopulateStatsTable
+Populated TheGame from ticket %s
+Post Score worked
+Post stats complete (%d, %d)
+PostRaceStatsUpdate performed
+PostScore
+Posted PSID to Medius server
+Posting NP scores Ms2Online
+Posting SVO Scores
+PreRaceStatsUpdate performed
+Preparing leaderboard track %d
+PrevStatsViewFilter
+Process post race stats triggered
+ProcessStatsAndUnLocks
+Queing statemachines - cGUIStateMachines::MatchMadeGame,	cStateMachine::GUIPreraceSequence
+Querying ranked, local score is %d
+QuitRaceStatsUpdate performed
+Race Stats Manager Completion callback at %d
+Rank Icon
+Rank Text,Rank Icon
+Ranked quit count decremented to %i
+Ranked up baby! Immune for 3 races
+RankedGame
+RankedOptionSelected
+Ready to post %d stats
+Removing %d stats from profile
+Request NP Ticket Failed 0x%08x
+Request NP Ticket succeeded
+ResetMatchMakingTimer
+ResetStatsView
+ResetStatsViewFilter
+Retrieved PlayerStats
+Room has gone to Ranked Summary, or lobby has timed out and its a ranked game
+Room is in Eliminator Casual Game
+Room is in Eliminator Ranked Game
+Room is in Standard Casual Game
+Room is in Standard Ranked Game
+RoomMatchMakingPreferenceGlobal
+SAS_Rank_Level
+SP_UpdateTicket
+SVBrowser::TicketLogin() 'TicketLoginURI' is not secure!
+SVBrowser::TicketLogin() could not find URI 'ticketLogin'
+SaveMatchMakingPref
+Saving %d stats to profile
+Saving SVO Stats to profile
+Saving SVO Stats to profile state machine
+SceNpMatching2CreateJoinRoomResponse Failed to get event data
+SelectLeaderboardRow
+SelectNextLeaderboardFilter
+SelectPlayerDetailsFromRankedLeaderboard
+SelectPlayerDetailsFromSpeedWeekendLeaderboard
+SelectedPlayer is me so skipping DownloadSelectedPlayerStats()
+SelectedPlayerHasHighestRankLevel
+SendMatchingRoomInvites
+Service Id for NP ticket is %s
+SetBestScore
+SetBoardTypeToRanked
+SetCasualOption
+SetLeaderboard
+SetLeaderboardFromTimeAttack
+SetLeaderboardsInProgress
+SetMatchMakingPreferenceFromProfile
+SetRankedOption
+SetScore
+SetSelectedPlayerFromLeaderboard
+SetSelectedTicket
+SetTTScoresBegin
+SetTTScoresEULAAccepted
+SetTTScoresEULARejected
+SetTTScoresTickerSet
+Setting Match Making preference to 0
+Setting Match Making preference to 1
+Setting leaderboard vehicle from ticket %s
+Setting room to Match Making Error
+Setting room to Start Match Making
+Setting the next target time and shrinking leaderboard of size %d
+SetupRankedLeaderboard
+SetupTimeAttackLeaderboard
+ShowFestivalRankIcon
+ShowOnlineRankIcon
+Skill CP
+Skill_Ranking
+Skill_Threshold_1
+Skill_Threshold_2
+Skill_Threshold_3
+Skipping stats profile save - current not available
+SpeedWeekendCompletedTickets
+SpeedWeekendCompletedTicketsForClass
+SpeedWeekendGetGlobalRank
+SpeedWeekendNumTickets
+SpeedWeekendNumTicketsForClass
+SpeedWeekendPlayerTopOfLeaderboard
+SpeedWeekendTicketBarrelComplete
+SpeedWeekendTicketBarrelRaced
+SpeedWeekendTicketComplete
+SpeedWeekendTicketHasBarrels
+SpeedWeekendTicketTimeBeaten
+Speed_Ranking
+Speed_unlock_ticket
+Start GUI PostSWScores
+Start GUI PostSWScores - ttScoresProgress %d
+StartGUIPostSWScores
+StartGUIPostTTScores
+StartMatchMaking
+StartNpMatching2
+Started cMedius
+Started cNpScore
+Starting cMedius...
+StateMachine #%d redundant or aborted (Medius)
+Statistics are disabled, please enable them in hkbase/config/hkConfigMemoryStats.h
+Stats for account %d no longer needed
+Stopped NpMatching2
+Stopped cMedius
+Stopped cNpScore
+Submitting pending race stats for game mode %d.
+SuperSetName : %s
+Synced Medius Buddy List
+TTScoresInProgress
+TTScoresProgress is now %d %s
+There are no online tickets to choose from
+Ticket Env Name is %s
+Ticket Laps is %d
+Ticket Name is %s
+Ticket Race Type is %d
+Ticket Track Name is %s
+TicketBestMedal
+TicketClassAvailable
+TicketClassSelectable
+TicketEliminatorLimit
+TicketEliminatorLimitAchieved
+TicketFestivalRank
+TicketImageName
+TicketIsElminatorEvent
+TicketIsMotorstormEvent
+TicketIsSpeedEvent
+TicketIsStandardEvent
+TicketIsUnlocked
+TicketLoginURI
+TicketNumberofLaps
+TicketSelectable
+TicketSpeedTarget
+TicketSpeedTargetAchieved
+TicketTitle
+TicketUnlocksEliminator
+TicketUnlocksSpeed
+Ticket_Settings
+Ticket_Source
+Ticket_Type
+TimeAttackPostScores
+ToggleMatchMakingPref
+TryExecuteCmds_findInputMatch:
+TryExecuteCmds_foundMatch: buf#=U16, prevBuf=U64, buf(tmp)=U64
+Unable to Queue GUIEnterMatchMadeGame statemachine, queue not empty
+Unable to cancel match making as we arent connected to MLS or MMS servers
+UpdateLeaderboardBySelection
+UpdatePlayerRankProgress
+UpdateProfileStatsWithOnline
+UpdateSpeedWeekendLeaderboardBySelection
+UpdateSpeedWeekendLeaderboardSelection
+UpdateTimeAttackLeaderboardBySelection
+Updated Room Info. Room Status is now Start Match Making
+Updating SW leaderboard and marking as read
+Updating SW leaderboard without marking as read
+Updating SW leaderboard, getting top
+Updating TA leaderboard, filters set : %d %d %d %d
+Upgraded PlayerStats to version %d
+UploadPlayerStats() failed
+XP changed to = %d 
+XP not decreased due to recent rank promotion %d
+XP was = %d 
+biggestScoreDecrease
+biggestScoreIncrease
+cMedius::SyncNpBuddys() - no buddies found moving on
+cOnlineOnline::getSelectedPlayerRankXP(): PlayerNetObject invalid
+casual games played
+data/databases/Stats.xml
+data/events/tickets/
+f_casual_rig
+f_casual_rig_LV01
+f_casual_rig_LV03
+f_casual_rig_lv03
+festival.rank.skill
+festival.skillPoints
+festivalRank
+gameBinaryStatsPostURI
+gamePostBinaryStatsURI
+gamersdaydemo1b.ticket
+gamersdaydemo1c.ticket
+gui/textureresources/guitickets.rpk
+gui/textureresources/guitickets.rpk#
+highestScore
+keys/tickets/
+latest.skill.rank
+leaderboard
+leaderboard/ranked
+leaderboard/speed
+leaderboard/timeattack
+loading.speedweekend.leaderboard.visited
+lowestScore
+ns1:onlineRankings
+online.casualgamesplayed
+online.ranked.bronzes
+online.ranked.gamesplayed
+online.ranked.golds
+online.ranked.longwinningstreak
+online.ranked.playersbeaten
+online.ranked.silvers
+online.wreckFreeRankedRaces
+online_ranked
+poststats
+p}jbx}*XPU#
+ranked bronze
+ranked games played
+ranked gold
+ranked players beaten
+ranked silver
+ranked winning streak
+sceNpManagerRequestTicket2() failed. Error code = 0x%08x
+sceNpMatching2AbortContextStart() result = 0x%08x
+sceNpMatching2ContextStart() failed. Error code : 0x%08x
+sceNpMatching2ContextStartAsync() Success
+sceNpMatching2ContextStartAsync() completed
+sceNpMatching2CreateCtx() failed. Error code : 0x%08x
+sceNpMatching2CreateJoinRoom Failed. Error code = 0x%08x
+sceNpMatching2DestroyContext() result = 0x%08x
+sceNpMatching2GetEventData Failed ret = 0x%08x
+sceNpMatching2GetRoomDataExternalList Failed. Error code = 0x%08x
+sceNpMatching2GetWorldInfoList Failed. Error code = 0x%08x
+sceNpMatching2Init2() completed
+sceNpMatching2JoinRoom Failed. Error code = 0x%08x
+sceNpMatching2LeaveRoom Failed. Error code = 0x%08x
+sceNpMatching2RegisterContextCallback() completed
+sceNpMatching2RegisterContextCallback() failed. Error code : 0x%08x
+sceNpMatching2RegisterRoomEventCallback() completed
+sceNpMatching2RegisterRoomEventCallback() failed. Error code : 0x%08x
+sceNpMatching2RegisterRoomMessageCallback() completed
+sceNpMatching2RegisterRoomMessageCallback() failed. Error code : 0x%08x
+sceNpMatching2Term2() result = 0x%08x
+showMemStats
+small_ticket_beaten.dds
+small_ticket_locked.dds
+small_ticket_raced.dds
+small_ticket_unlocked.dds
+spUpdateTicketURI
+speedweekend-ticketselect.gui
+start ticket %s
+stat.score
+svo.stats.
+svo.stats.%d-%d-%d-
+svo.stats.%d-%d-%d-%s
+swleaderboard
+ticket.%d.%d.best_time
+ticketLogin
+tickets01.dds
+userStats
+wreckreation-leaderboards-ranked.gui
+wreckreation-leaderboards-timeattack.gui
