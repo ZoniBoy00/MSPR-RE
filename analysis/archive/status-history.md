@@ -138,54 +138,20 @@ See README.md. Paths in the sections below are old: re\ -> research\re\, server\
 - server\mspr_dns.py :53 — MSPR domains + wildcard source
 - server\medius_replay_stub.py — handshake replay (obsolete, Horizon replaced it)
 
-## 2. WHAT DOES NOT WORK YET
+## 2. What did not work at the time of the snapshot (all solved since)
 
-### Ranked/Casual game modes
-- Does not work on PS Rewired itself (allowedRanks: 0)
-- No implementation in PSMultiServer
-- Needs: decompiling the StartMatchMaking chain (Ghidra) -> ticket parameters -> a MediusMatchFindGame
-  definition for MSPR -> testing against the client
-- Working hours estimate: 2-4 weeks of iterative work
+The snapshot listed four open problems and a plan of four steps with working-hour estimates. All of them are done; the table says how they ended.
 
-### Medius SCERT handshake with Horizon
-- The game connects + the SCERT handshake goes through
-- CRYPTKEY_GAME handler added but THE GAME CLOSES the connection right after (Disconnected by request)
-  -> cause unknown
-- Possible causes: certificate validation (the client validates the SCERT Root Authority chain), RC4 key
-  derivation different from what Horizon expects, Medius version differences (MSPR = 3.03 vs Horizon's default)
-- Debug: Horizon log + packet capture side by side
+| Open at the snapshot | How it ended |
+|---|---|
+| Ranked and Casual: no implementation anywhere, the original service did not offer them either | Worked out from the EBOOT and implemented in Horizon (`MsprMatchmaker`); played with the real game, see Stage 2 and [reverse-engineering.md](../reverse-engineering.md). |
+| The game closed the Medius connection right after the SCERT handshake | Solved by the changes to Horizon listed in Stage 1 (application id 21624 accepted by the Medius servers, the SvoURL message); the game now reaches the lobby. |
+| The SVO flow stopped after `getRegion` with a DNS error | Solved: Stage 1 found the cause (the emulator's DNS hook got no answer because the replacement DNS was not running), and the whole flow from `index` to the leaderboards and the results runs against the replacement server, see [reverse-engineering.md](../reverse-engineering.md). |
+| A DME session for a Custom Game | Works, as do the Ranked and Casual races. |
 
-### The SVO flow stops after getRegion
-- The game's flow: index ✓ -> GET / ✓ -> getRegion ✓ -> DNS error
-- Should follow: POST https:ticket/login
-- DNS error = the game tries to resolve a name that does not go through (probably "ticket" or a similar
-  URL_List value as a host)
-- mspr_dns.py now wildcard-resolves single-label names -> TEST AGAIN
+## 3. The plan of the snapshot (done)
 
-## 3. NEXT STEPS (in order)
-
-### Step 1: finish the SVO flow (easiest, 1-2 days)
-1. Start the stack (DNS + SVO + Horizon)
-2. RPCS3 DNS = 192.0.2.10
-3. Test online -> check the DNS log for the name that fails
-4. Add catch-all routes to the SVO server if needed
-5. Goal: the ticket/login -> getEula -> leaderboard flow works
-
-### Step 2: Medius handshake with Horizon (medium, 1-2 weeks)
-1. Debug CRYPTKEY_GAME: add debug logging to MAS.cs ProcessMediusMessage
-2. Compare the captured handshake (re\medius_10071_dialogue.txt) with the sequence Horizon sends
-3. Fix the certificate/keys if needed
-4. Goal: the client does not disconnect but continues to the lobby
-
-### Step 3: DME game session (demanding, 2-4 weeks)
-1. DME Application ID -> 21624 (now 120)
-2. SCERT game session encryption (RC4-SHA1)
-3. Test a custom game to the end
-
-### Step 4: Ranked/Casual (most demanding)
-1. Decompile StartMatchMaking (Ghidra, re\ghidra_proj\MSPRFINAL2)
-2. Ticket parameters + matchmaking messages
-3. Test
+Step 1 finish the SVO flow, step 2 the Medius handshake, step 3 the DME game session, step 4 Ranked and Casual. All four steps are complete. What is still open today is listed in the [README](../../README.md).
 
 ## 4. FILES
 
