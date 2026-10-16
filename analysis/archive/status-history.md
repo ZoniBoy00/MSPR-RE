@@ -153,49 +153,22 @@ The snapshot listed four open problems and a plan of four steps with working-hou
 
 Step 1 finish the SVO flow, step 2 the Medius handshake, step 3 the DME game session, step 4 Ranked and Casual. All four steps are complete. What is still open today is listed in the [README](../../README.md).
 
-## 4. FILES
+## 4. The files of the snapshot, and where they are now
 
-```
-MSPR\
-├── captures\                           — network captures + reports
-│   ├── REPORT-ranked-capture.md       — ranked capture analysis
-│   ├── REPORT-custom-capture.md       — custom capture analysis
-│   └── mspr-*.pcapng + *-summary.json  — raw data
-├── mspr_capture\                       — passive capture tool
-├── server\
-│   ├── mspr_server.py                  — SVO/HTTP :10060
-│   ├── mspr_dns.py                     — DNS :53 (wildcard)
-│   ├── medius_replay_stub.py           — old replay stub
-│   ├── Start-MSPRServer.ps1            — start script
-│   └── data\mspr_server.json           — accounts + results + leaderboards
-├── PSMultiServer\                      — Horizon + SVO (built)
-│   └── Servers\
-│       ├── Horizon\bin\Release\net6.0\Horizon.exe
-│       └── SVO\bin\Release\net6.0\
-└── re\
-    ├── EBOOT.ELF                       — decrypted game code
-    ├── EBOOT.BIN                       — original (copy)
-    ├── RE-FINDINGS.md                  — all RE findings
-    ├── FULL_STRINGS.md                 — 2059 strings categorised
-    ├── ranked_casual_strings.txt       — 145 ranked/casual strings
-    ├── matchmaking_flow_strings.txt    — 353 matchmaking strings
-    ├── medius_10071_dialogue.txt       — Medius handshake dialogue
-    ├── medius_handshake.txt            — handshake from every port
-    ├── RANKED-CASUAL-DESIGN.md         — ranked/casual design
-    ├── EMULATION-SERVER-BLUEPRINT.md   — server blueprint
-    ├── ghidra_proj\MSPRFINAL2          — Ghidra project (10740 fn)
-    └── ghidra_findings\                — decompilations
-```
+The snapshot listed the files of the original local work folder. None of those paths exist in this repository; this is where the material went.
 
-## 5. STARTING (the whole stack)
+| In the snapshot | Now |
+|---|---|
+| `captures\REPORT-ranked-*.md`, `REPORT-custom-*.md` | [REPORT-ranked-capture.md](REPORT-ranked-capture.md), [REPORT-custom-capture.md](REPORT-custom-capture.md) in this folder |
+| `captures\mspr-*.pcapng` | Not published (other players' names). The redacted summaries and HTTP objects are in [`captures/`](../../captures). |
+| `mspr_capture\` | [`tools/mspr_capture/`](../../tools/mspr_capture) |
+| `server\mspr_server.py`, `mspr_dns.py`, `medius_replay_stub.py`, the start script, `data\mspr_server.json` | Gone: the first Python server was replaced by the TypeScript server in [MSPR-Server](https://github.com/ZoniBoy00/MSPR-Server) (not part of this repository). |
+| `PSMultiServer\` (Horizon and SVO, .NET 6) | The Horizon part lives in MSPR-Server (`horizon/`, now on .NET 10); the SVO of PSMultiServer is not used. |
+| `re\EBOOT.ELF`, `EBOOT.BIN`, `ghidra_proj\` | Not published: the game's own code and a very large project. Decrypt your own copy, see [tools/legacy](../../tools/legacy/README.md). |
+| `re\FULL_STRINGS.md`, `ranked_casual_strings.txt`, `matchmaking_flow_strings.txt`, `medius_10071_dialogue.txt`, `medius_handshake.txt` | [`analysis/earlier/`](../earlier) |
+| `re\ghidra_findings\` | [`analysis/earlier/ghidra_findings/`](../earlier/ghidra_findings) and, for the later work, [`analysis/v103/`](../v103) |
+| `re\RE-FINDINGS.md`, `RANKED-CASUAL-DESIGN.md`, `EMULATION-SERVER-BLUEPRINT.md` | [RE-FINDINGS.md](RE-FINDINGS.md), [RANKED-CASUAL-DESIGN.md](RANKED-CASUAL-DESIGN.md), [EMULATION-SERVER-BLUEPRINT.md](EMULATION-SERVER-BLUEPRINT.md) in this folder |
 
-```powershell
-# Administrator PowerShell:
-cd <project>\source\server
-python -X utf8 mspr_dns.py          # window 1: DNS :53
-python -X utf8 mspr_server.py       # window 2: SVO :10060
-# (Horizon separately: PSMultiServer\Servers\Horizon\bin\Release\net6.0\Horizon.exe)
+## 5. Starting the stack
 
-# RPCS3: Configuration -> Network -> DNS address: 192.0.2.10
-```
-
+The commands of the snapshot (two Python scripts and `Horizon.exe` from a .NET 6 build) no longer apply. The current server is started as described in the [getting-started guide of MSPR-Server](https://github.com/ZoniBoy00/MSPR-Server/blob/main/docs/guides/getting-started.md).
