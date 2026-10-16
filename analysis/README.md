@@ -19,7 +19,7 @@ What is known about MotorStorm: Pacific Rift's online code, written down. Start 
 
 - The game binary, the Ghidra project and the raw captures are not here. Paths in the text that look like `analysis/...` or `captures/...` name files in this repository when they exist; the others name files of the original local work folder.
 - Addresses are virtual addresses of the decrypted v1.03 EBOOT (TOC base `r2 = 0x208958`).
-- Names of functions and classes that were derived from RTTI or strings are facts; names given by hand (`ApplyMSPRNames.py` in `tools/re/ghidra/`) are marked as verified or as guesses in the reports.
+- Names of functions and classes that were derived from RTTI or strings are facts; names given by hand (`ApplyMSPRNames.py` in `tools/re/ghidra_scripts/`) are marked as verified or as guesses in the reports.
 
 ## Reproducing
 

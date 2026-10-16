@@ -118,7 +118,7 @@ These are the best identified addresses. **10,740 functions of the Ghidra projec
 | `0x648f18` | Reads the SVO URL (varint length and NUL terminator) | earlier v1.03 analysis; see ranked-casual.md |
 | `CancelMatchMaking`, `CheckMatchMakingAutoStart`, `GotMatchMakingTicket`, `TicketTrackName` | found in the client strings and partly in the function string list | their exact function entries, call paths and timeout branches are not verified in the current reports |
 
-`tools/re/ghidra/ApplyMSPRNames.py` applies the verified names and comments. Its syntax was checked but it has not been run in Ghidra, because the PS3 PowerPC ELF could not be opened by the available tooling. Run it from the Script Manager with the MSPR v1.03 EBOOT program active and check the log for SKIP lines.
+`tools/re/ghidra_scripts/ApplyMSPRNames.py` applies the verified names and comments. Its syntax was checked but it has not been run in Ghidra, because the PS3 PowerPC ELF could not be opened by the available tooling. Run it from the Script Manager with the MSPR v1.03 EBOOT program active and check the log for SKIP lines.
 
 Still to do in Ghidra: verify the addresses above in the real v1.03 program, follow the call paths of `CancelMatchMaking`, `CheckMatchMakingAutoStart` and `GotMatchMakingTicket`, record the timeout conditions and compare them with the runtime log, and mark uninterpreted parts as unknown rather than naming tens of thousands of functions from a neighbouring string.
 

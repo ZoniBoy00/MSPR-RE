@@ -91,7 +91,18 @@ Signatures, as Horizon checks them at the Medius login:
 - Named machine-wide mutexes (`Global\...`) cannot be created in the hardened systemd service (`The system cannot open the device or file specified`); GeoIP and the certificate chain were never initialised. `MultiServerLibrary/InitLock.cs` falls back to a process-local mutex.
 - Finding such a hang: `dotnet-stack report -p <pid>` shows the managed stacks. With `PrivateTmp=yes` the diagnostic socket is in the service's private `/tmp`; point `TMPDIR` at a short symlink to it (the socket path is limited to 108 characters). A thread at 100 % CPU in `top -H` is the one to look for.
 
-## 7. Other projects that revive this game **[research]**
+## 7. How the game sends a race result **[EBOOT]**
+
+Read while looking for why a real PS3 posts its Ranked results only at the next SVO login (section 5). Decompiled with Ghidra from the v1.03 EBOOT; the cause is **not found yet**, but the path is now mapped.
+
+- **The request.** `FUN_002c8328` builds the `finishGame` parameters from the *current stats* of the stats manager: `location.gameMode`, `location.track`, `location.vehicle`, `endState`, `gameName`, `gameId` and one parameter per stat (log line `Submitting pending race stats for game mode %d.`). Without current stats it fails with `No current stats available` and sends nothing.
+- **The senders.** `0x2c8760` (a Time Attack result: logs `Posting ghost data`, adds `ghostLength` and the ghost as an `application/octet-stream` body) and `0x2c89a0` (every other result) call the SVO client's submit method (virtual slot +0x14) with the action name `finishGame`, and set a "sent" flag in the action (+0x38). Nothing in them queues or retries: the request goes out when they are called.
+- **The decision to post.** Three state-machine handlers (`0x851258`, `0x852da0`, `0x85acd8`; table entries at `0xe7b768`, `0xe7b838`, `0xe7b9d8`) log `No pending stats, skipping score post.` and do nothing when the stats manager holds no pending stats. When it does, the first two (`0x851258`, `0x852da0`) ask the owning object a virtual question (**slot +0x224, returns a bool**) and only if the answer is true queue event `0x24` (the score post, judging by the log lines around it). The third, `0x85acd8`, is the dropout handler (`SM_Dropout callback is now CB_DropoutStartSVO`): it asks nothing and queues `0x20`, `0x55`, `0x51`, `0x5f` and `0x24`.
+- **The offline path.** `0x8ea10` logs `** Updating Online Profile with offline stats etc **` and applies the `Online.ranked.*` counters of results that were kept offline.
+- **What this means.** If the answer of the +0x224 question is false after a race (for example because the game thinks it is not signed in or has no valid SVO session), the stats stay pending and are posted later, which fits what a real PS3 does (`result.queued`). The question is the thing to identify next: the owning class and the body of slot +0x224. On RPCS3 it evidently answers true.
+- **Server side, meanwhile.** Every `finishGame` now writes a `result.received` event with the cookie names, how the player was recognised (session cookie, last login of the address, nobody) and the time since the login. A PS3 race with that event in the journal shows whether the request arrives at all.
+
+## 8. Other projects that revive this game **[research]**
 
 No public project documents this game's SVO or Medius protocol in detail; what is known here is ahead of what could be found.
 

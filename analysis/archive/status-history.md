@@ -2,7 +2,7 @@
 
 **Historical snapshot.** Everything below describes the project at the time of the snapshot: the percentages, the "what does not work yet" lists and the file paths (see [README](README.md) for the old-to-new path map) are not the current state.
 
-Where things stand now: the SVO routes, the Medius matchmaking for Ranked and Casual and the race are implemented and played with the real game (RPCS3, and first tests with a real PS3); ghost download, Speed Weekend and the NP ticket signature are decoded. The Ghidra work covers the v1.03 EBOOT (10,740 functions, the verified names are in `tools/re/ghidra/`). Read [reverse-engineering.md](../reverse-engineering.md), [findings.md](../findings.md) and the open items in the [README](../../README.md).
+Where things stand now: the SVO routes, the Medius matchmaking for Ranked and Casual and the race are implemented and played with the real game (RPCS3, and first tests with a real PS3); ghost download, Speed Weekend and the NP ticket signature are decoded. The Ghidra work covers the v1.03 EBOOT (10,740 functions, the verified names are in `tools/re/ghidra_scripts/`). Read [reverse-engineering.md](../reverse-engineering.md), [findings.md](../findings.md) and the open items in the [README](../../README.md).
 
 ## The first days, stage by stage
 
