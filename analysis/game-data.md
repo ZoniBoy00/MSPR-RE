@@ -44,6 +44,29 @@ How to try it (on a copy of the game's archive, the tools are in this repository
 - `Configs/Includes/*GameOptions.cfg` has an `OnlineOptions` block with the online boost rubber band (`onlineBoostCatchupMinThreshold` 10, `...MaxThreshold` 35, `onlineBoostSlowdown...`). These are game rules, not server settings.
 - `scripts/game_config.xml` has the `Lib Online` option.
 
+## The update archive and the texts of the game
+
+The installed 1.03 update adds `ms2patch.psarc` next to the disc archive (3,570 entries; it replaces files of `ms2.psarc`, among them `gui/`, `data/onlinerankings/rankings.xml` and `scripts/host.lua`). `common.psarc`, `pack01.psarc` and `pack02.psarc` hold downloadable tracks (among them the Speed and Volcano Weekend tracks). Read the update archive first and the disc archive for what it does not have.
+
+**The texts.** `gui/text_<Language>.lang` holds every text of the game in 17 languages. The format is simple: two big-endian counts (the number of strings, twice), then that many pairs of (string id, offset), then the strings, zero-terminated UTF-8. The disc has 2,621 English strings, the update 2,920 (the Speed Weekend, the Volcano Weekend, the new trophies and the Microbadges came with the update). The ids are what the menus (`.gui` files, a packed resource format with `.lyt` layouts) refer to. What they say about the online side:
+
+| Id | Text (shortened) | What it tells |
+|---|---|---|
+| 4200 | `Your Best Time has been beaten -` | The text of the Speed Weekend notice that `speed-weekend/beaten` feeds (what follows it, presumably the name and the time, comes from the data). |
+| 4191, 4199 | A red helmet on the Speed Weekend progress bar means a *friend* has beaten your time; it clears when you have viewed the leaderboard. | The marker is about the friends board, and viewing it is what `speed-weekend/viewed` reports. |
+| 4183 | If you try this race again, your new Target Time will be the Result Time of your closest rival on the leaderboard. | The Weekend reads the leaderboard to set a target. |
+| 2750, 2751 | `There was a problem posting a score to / retrieving scores from the PlayStation Network server` | The game has a separate score post to **PSN** (NP Score) besides the SVO result; see [findings](findings.md) section 7. |
+| 2747, 2749, 2748 | problems downloading stats, logging in to the SVO server, downloading the Location ID | The error texts of the SVO actions. |
+| 2716, 1450 | `An error occurred while communicating with the server.` | The dialog that appears now and then in the menu (not tied to a fault of the server). |
+| 2727, 2729 | the server has no account details for you / reports that your account is banned | What the login answers can say. |
+| 3975, 3977, 4101 | Volcano Weekend: a festival, a duel race, the page title | The Volcano Weekend exists in the game (game mode 10 is still inferred). |
+
+**Regions.** `data/onlinelocations/locationmap.xml` maps a country code to a region number: 1 for the United States, 2 for Canada, 3 for Europe and most others, 4 for Australia and New Zealand, 5 for Japan, Korea, Taiwan, Hong Kong and Iceland. It is presumably where the Location ID and the region filter of the leaderboards come from (the game has the texts "Location ID" and "Region Select"); this is inferred, not traced in the code.
+
+**Vehicles.** The class order of `vehicles.csv` and `vehicleselectparams.csv` is Bike, ATV, Buggy, Rally Car, Racing Truck, Mud Plugger, Big Rig (the Monster Truck class comes with the downloadable content). The wire value `location.vehicle` counts these from 1; the game keeps it from 0, which is the "minus one" of the `beaten` parser. The server's table (1 Bike ... 7 Big Rig, 8 Monster Truck) is right.
+
+**Scripts.** `scripts/*.lua` are tuning files (vehicle definitions, particles, cameras, logging) and contain no online logic. `logging.lua` switches `LibOnline(true)` on.
+
 ## Ideas that follow
 
 - Check the Speed and Volcano Weekend times against the real courses: the length of a `_speed` course gives a lower bound for a plausible time.
