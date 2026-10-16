@@ -47,7 +47,7 @@ Reading needs nothing but a text viewer. Running the EBOOT analysis needs your o
 1. A real PS3: its PSN ticket against the signature check, why its Ranked results arrive only at the next SVO login.
 2. The text of the "beaten" notice and the numbering of `vehicle` in it; the answer the game expects to `myPosition=true`.
 3. Real stats blobs, to confirm the counters behind rank and XP.
-4. The Volcano Weekend (game mode 10, not raced yet), event specifics (tickets, targets, schedule) and whether a Weekend race posts a ghost.
+4. The Speed Weekend (game mode 11): the event specifics (tickets, targets, schedule) and whether a race posts a ghost (the races seen had none). The Volcano Weekend (game mode 10) is only inferred from the game's strings and has never been raced.
 5. Ticket version 4.0 (an unsolved hash); a real 6-player Ranked race.
 
 ## Built with AI assistance
