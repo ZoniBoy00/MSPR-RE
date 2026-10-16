@@ -144,8 +144,8 @@ The snapshot listed four open problems and a plan of four steps with working-hou
 
 | Open at the snapshot | How it ended |
 |---|---|
-| Ranked and Casual: no implementation anywhere, the original service did not offer them either | Worked out from the EBOOT and implemented in Horizon (`MsprMatchmaker`); played with the real game, see Stage 2 and [reverse-engineering.md](../reverse-engineering.md). |
-| The game closed the Medius connection right after the SCERT handshake | Solved by the changes to Horizon listed in Stage 1 (application id 21624 accepted by the Medius servers, the SvoURL message); the game now reaches the lobby. |
+| Ranked and Casual: no implementation anywhere, and they did not work on the original service either (its MLS pointed the game to a LAN address of the MMS, see Stage 2) | Worked out from the EBOOT and implemented in Horizon (`MsprMatchmaker`); played with the real game, see Stage 2 and [reverse-engineering.md](../reverse-engineering.md). |
+| The game closed the Medius connection right after the SCERT handshake (cause unknown) | Not reproduced since. Stage 1 found that the game had never reached Horizon in those tests (the connections in the log were Horizon's own DME), so this was probably a misreading of the same missing-DNS problem. Against the replacement server the game completes the handshake and reaches the lobby. The cause was not confirmed separately. |
 | The SVO flow stopped after `getRegion` with a DNS error | Solved: Stage 1 found the cause (the emulator's DNS hook got no answer because the replacement DNS was not running), and the whole flow from `index` to the leaderboards and the results runs against the replacement server, see [reverse-engineering.md](../reverse-engineering.md). |
 | A DME session for a Custom Game | Works, as do the Ranked and Casual races. |
 
