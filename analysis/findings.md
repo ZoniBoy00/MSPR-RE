@@ -114,4 +114,4 @@ No public project documents this game's SVO or Medius protocol in detail; what i
 | `xtvaser/clank` (deprecated), `LittleBigRefresh/NPTicket` | A Medius 1.5-1.8 emulator; a C# NP ticket reader and verifier. |
 | `RipleyTom/rpcn` | RPCN, the RPCS3 NP server; its FAQ says it does not work for real consoles. |
 
-RPCS3 issue 13126 (fixed October 2025): Ranked/Custom races with ten or more players failed to start for RPCS3 players on PS Rewired; the "error communicating with the server" dialog appeared on real PS3s too.
+RPCS3 issue 13126 (a player's bug report, later closed): with ten or more players in a Ranked or Custom lobby the match failed to start for players on RPCS3, reportedly not for real PS3s. Its author said later that it was fixed and multiplayer works. The "An error occurred while communicating with the server" dialog mentioned in the report is a different thing: it appears now and then in the menu for everybody, real PS3s included, and can be declined without effect, so it is not related.
